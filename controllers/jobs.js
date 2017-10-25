@@ -3,6 +3,7 @@ const Job = require('../models/job');
 function jobsIndex(req, res, next) {
   Job
     .find()
+    .populate('center reqCertLv')
     .exec()
     .then(jobs => res.status(200).json(jobs))
     .catch(next);
@@ -18,6 +19,7 @@ function jobsCreate(req, res, next) {
 function jobsShow(req, res, next) {
   Job
     .findById(req.params.id)
+    .populate('center reqCertLv')
     .exec()
     .then(job => {
       if(!job) return res.notFound();
