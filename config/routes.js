@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const jobs = require('../controllers/jobs');
 const certifications = require('../controllers/certifications');
+const messages = require('../controllers/messages');
 const auth  = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
 
@@ -18,6 +19,13 @@ router.route('/certifications')
 
 router.route('/certifications/:id')
   .get(certifications.show);
+
+router.route('/messages')
+  .get(messages.index)
+  .post(messages.create);
+
+router.route('/messages/:id')
+  .delete(messages.delete);
 
 router.route('/register')
   .post(auth.register);
