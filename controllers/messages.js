@@ -2,7 +2,9 @@ const Message = require('../models/message');
 
 function messagesIndex(req, res, next) {
   Message
-    .find()
+    .find({ $or:
+      [{ to: req.currentUser.id }, { from: req.currentUser.id }]
+    })
     .populate('to from')
     .exec()
     .then(messages => res.json(messages))
