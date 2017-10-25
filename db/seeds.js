@@ -54,6 +54,14 @@ Certification
       center: false,
       certLv: certLvls[2]
     }, {
+      name: 'Jess',
+      email: 'jess@ga.co',
+      password: 'password',
+      passwordConfirmation: 'password',
+      image: 'http://www2.padi.com/blog/wp-content/uploads/2016/06/JessicaAlba-scuba.png',
+      center: false,
+      certLv: certLvls[0]
+    }, {
       // Center
       name: 'Da Nang Scuba',
       email: 'grant@ga.co',
