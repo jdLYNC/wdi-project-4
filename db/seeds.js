@@ -13,6 +13,7 @@ User.collection.drop();
 Job.collection.drop();
 Message.collection.drop();
 
+// All required certification data should come from seeds file
 const certificationData = [{
   title: 'Divemaster',
   abbr: 'DM',
@@ -74,6 +75,10 @@ Certification
           center: users[1],
           reqCertLv: certLvls[1],
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        }, {
+          center: users[1],
+          reqCertLv: certLvls[5],
+          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
         }];
         return Job
           .create(jobData)
@@ -83,6 +88,11 @@ Certification
               from: users[1],
               to: users[0],
               text: 'Hi Josh, welcome to Diveboard!  Are you interested in working at Da Nang Scuba?',
+              read: false
+            }, {
+              from: users[0],
+              to: users[1],
+              text: 'Hi Grant!  Yes I am!',
               read: false
             }];
             return Message
