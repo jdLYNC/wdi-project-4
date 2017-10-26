@@ -7,7 +7,7 @@ const Certification = require('../../../models/certification');
 const User = require('../../../models/user');
 const Job = require('../../../models/job');
 
-describe('PUT /api/jobs/:id', () => {
+describe('DELETE /api/jobs/:id', () => {
   let certificationData = null;
   let userData = null;
   let jobData = null;
