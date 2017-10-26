@@ -7,7 +7,7 @@ const locationSchema = new mongoose.Schema({
 });
 
 const userSchema = new mongoose.Schema({
-  // Shared user values (all required values)
+  // Shared user values
   name: { type: String, required: 'Username is required' },
   email: { type: String, required: 'Email is required', unique: 'That email has already been taken' },
   password: { type: String, required: 'Password is required' },

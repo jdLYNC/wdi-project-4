@@ -15,6 +15,7 @@
     "test": "yarn test:server && yarn test:client"
   },
   "dependencies": {
+    "atob": "^2.0.3",
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.1",

@@ -5,17 +5,14 @@ const Certification = require('../../../models/certification');
 const User = require('../../../models/user');
 const Job = require('../../../models/job');
 
-describe('GET /api/jobs', () => {
+describe('GET /api/jobs/:id', () => {
   let certificationData = null;
   let userData = null;
   let jobData = null;
+  let _job = null;
 
   before(done => {
     certificationData = [{
-      title: 'Divemaster',
-      abbr: 'DM',
-      level: 0
-    }, {
       title: 'Open Water Scuba Instructor',
       abbr: 'OWSI',
       level: 2
@@ -23,15 +20,6 @@ describe('GET /api/jobs', () => {
     Certification.create(certificationData)
       .then(certs => {
         userData = [{
-          // Diver
-          name: 'Josh',
-          email: 'josh@ga.co',
-          password: 'memory',
-          passwordConfirmation: 'memory',
-          image: 'https://i.imgur.com/XOXYjzJ.jpg',
-          center: false,
-          certLv: certs[1]
-        }, {
           // Center
           name: 'Da Nang Scuba',
           email: 'grant@ga.co',
@@ -47,16 +35,14 @@ describe('GET /api/jobs', () => {
         }];
         return User.create(userData)
           .then(users => {
-            jobData = [{
-              center: users[1],
+            jobData = {
+              center: users[0],
               reqCertLv: certs[0],
               description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-            }, {
-              center: users[1],
-              reqCertLv: certs[1],
-              description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-            }];
-            return Job.create(jobData);
+            };
+            return Job.create(jobData, (err, job) => {
+              _job = job;
+            });
           });
       })
       .then(() => done())
@@ -71,69 +57,54 @@ describe('GET /api/jobs', () => {
       .catch(done);
   });
 
-  it('should return a 200 response', done => {
+  it('should return a valid id', done => {
     api
       .get('/api/jobs')
       .set('Accept', 'application/json')
-      .expect(200, done);
-  });
-
-  it('should return an array', done => {
-    api
-      .get('/api/jobs')
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        expect(res.body).to.be.an('array');
+      .end(() => {
+        expect(mongoose.Types.ObjectId.isValid(_job.id)).to.deep.equal(true);
         done();
       });
   });
 
-  it('should return an array of objects', done => {
+  it('should return a 200 response', done => {
     api
-      .get('/api/jobs')
+      .get(`/api/jobs/${_job.id}`)
+      .set('Accept', 'application/json')
+      .expect(200, done);
+  });
+
+  it('should return an object', done => {
+    api
+      .get(`/api/jobs/${_job.id}`)
       .set('Accept', 'application/json')
       .end((err, res) => {
-        res.body.map(job => expect(job).to.be.an('object'));
+        expect(res.body).to.be.an('object');
         done();
       });
   });
 
   it('should return the correct data types', done => {
     api
-      .get('/api/jobs')
+      .get(`/api/jobs/${_job.id}`)
       .set('Accept', 'application/json')
       .end((err, res) => {
-        const jobs = res.body;
-        jobs.map(job => {
-          expect(job.id).to.be.a('string');
-          expect(job.center).to.be.an('object');  // Populated data
-          expect(job.reqCertLv).to.be.an('object');  // Populated data
-          expect(job.description).to.be.a('string');
-        });
-        done();
-      });
-  });
-
-  it('should return valid ids', done => {
-    api
-      .get('/api/jobs')
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        res.body.map(job => {
-          expect(mongoose.Types.ObjectId.isValid(job.id)).to.deep.equal(true);
-        });
+        const job = res.body;
+        expect(job.id).to.be.a('string');
+        expect(job.center).to.be.an('object');  // Populated data
+        expect(job.reqCertLv).to.be.an('object');  // Populated data
+        expect(job.description).to.be.a('string');
         done();
       });
   });
 
   it('should return the correct description', done => {
     api
-      .get('/api/jobs')
+      .get(`/api/jobs/${_job.id}`)
       .set('Accept', 'application/json')
       .end((err, res) => {
-        res.body.map((job, i) => {
-          expect(job.description).to.equal(jobData[i].description);
-        });
+        const job = res.body;
+        expect(job.description).to.equal(jobData.description);
         done();
       });
   });
