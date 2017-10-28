@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import LandingPage from './LandingPage';
+import LandingPage from '../general/LandingPage';
 
 const Routes = () => {
   return(

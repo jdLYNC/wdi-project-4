@@ -8,7 +8,7 @@ const SplashImage = styled.div`
   width: 100vw;
   height: 80vh;
   display: flex;
-  align-items: flex-end;
+  align-items: ${props => props.align};
 `;
 
 export default SplashImage;
