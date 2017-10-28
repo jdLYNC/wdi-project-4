@@ -1,11 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import Routes from './components/misc/Routes';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import './scss/style.scss';
 
 class App extends React.Component {
 
   render() {
     return (
-      <h1>WDI Project 4: MERN Stack App</h1>
+      <Router>
+        <Routes />
+      </Router>
     );
   }
 }
