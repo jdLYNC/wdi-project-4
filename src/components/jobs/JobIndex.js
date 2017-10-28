@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 
 import JobScroller from './JobScroller';
+import GoogleMap from '../utilities/GoogleMap';
 
 class JobIndex extends React.Component {
 
@@ -26,7 +27,9 @@ class JobIndex extends React.Component {
           </aside>
           <main className="col-sm-7">
             <div className="row">
-            MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main </div>
+              <GoogleMap
+                jobs={this.state.jobs} />
+            </div>
             <div className="row">
               <JobScroller
                 jobs={this.state.jobs} />
