@@ -1,6 +1,8 @@
 import React from 'react';
 import Axios from 'axios';
 
+import JobScroller from './JobScroller';
+
 class JobIndex extends React.Component {
 
   state = {
@@ -24,14 +26,16 @@ class JobIndex extends React.Component {
           </aside>
           <main className="col-sm-7">
             <div className="row">
-            MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main </div>
+            MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main MAIN main </div>
             <div className="row">
-              index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index index
+              <JobScroller
+                jobs={this.state.jobs} />
             </div>
           </main>
           <section className="col-sm-3">
-
-          </section>section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION section SECTION
+            <JobScroller
+              jobs={this.state.jobs} />
+          </section>
         </div>
       </div>
     );

@@ -74,18 +74,58 @@ Certification
         lat: 16.0535926,
         lng: 108.2450331
       }
+    }, {
+      name: 'Dive Center Manly',
+      email: 'tricky@ga.co',
+      password: 'password',
+      passwordConfirmation: 'password',
+      image: 'http://www.divesydney.com.au/wp-content/uploads/2014/07/logo.jpg',
+      center: true,
+      address: '10 Belgrave St, Manly NSW 2095, Australia',
+      location: {
+        lat: -33.797362,
+        lng: 151.282842
+      }
+    }, {
+      name: 'Atlantis Diving Gozo',
+      email: 'steph@ga.co',
+      password: 'password',
+      passwordConfirmation: 'password',
+      image: 'http://www.thalassapg.com/images/links_logo-atlantis.png',
+      center: true,
+      address: 'Triq Il-Qolla Is-Safra, Marsalforn, Gozo, Iż-Żebbuġ MFN 1405, Malta',
+      location: {
+        lat: 36.0728912,
+        lng: 14.2544883
+      }
     }];
     return User
       .create(userData)
       .then(users => {
         console.log(`${users.length} users created!`);
         const jobData = [{
-          center: users[1],
+          center: users[2],
           reqCertLv: certLvls[1],
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         }, {
-          center: users[1],
+          center: users[2],
           reqCertLv: certLvls[5],
+          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
+        }, {
+          center: users[3],
+          reqCertLv: certLvls[4],
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        }, {
+          center: users[3],
+          reqCertLv: certLvls[0],
+          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
+        }, {
+          center: users[4],
+          reqCertLv: certLvls[2],
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        }, {
+          center: users[4],
+          reqCertLv: certLvls[2],
           description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
         }];
         return Job
