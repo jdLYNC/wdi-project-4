@@ -21,24 +21,21 @@ const AboutText = styled.p`
 `;
 
 class LandingPage extends React.Component {
-  constructor() {
-    super();
 
-    this.state = {
-      newUser: {
-        name: '',
-        email: '',
-        password: '',
-        passwordConfirmation: '',
-        center: null,
-        certLv: '',
-        address: '',
-        location: ''
-      },
-      certs: []
-    };
+  state = {
+    newUser: {
+      name: '',
+      email: '',
+      password: '',
+      passwordConfirmation: '',
+      center: null,
+      certLv: '',
+      address: '',
+      location: ''
+    },
+    certs: []
+  };
 
-  }
 
   componentDidMount() {
     Axios

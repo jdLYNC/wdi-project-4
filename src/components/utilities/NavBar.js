@@ -1,9 +1,10 @@
 import React from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, FormGroup, FormControl, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
+import Auth from '../../lib/Auth';
 
-const NavBar = () => {
+const NavBar = ({ handleChange, handleSubmit }) => {
   return(
     <Navbar collapseOnSelect>
       <Navbar.Header>
@@ -14,9 +15,20 @@ const NavBar = () => {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          <LinkContainer to="/"><NavItem>Link</NavItem></LinkContainer>
-          <LinkContainer to="/"><NavItem>Link</NavItem></LinkContainer>
+          <LinkContainer to="/jobs"><NavItem>Jobs</NavItem></LinkContainer>
+          <LinkContainer to="/"><NavItem>Messages</NavItem></LinkContainer>
         </Nav>
+        {!Auth.isAuthenticated() && <Navbar.Form pullRight>
+          <form onChange={handleChange} onSubmit={handleSubmit}>
+            <FormGroup>
+              <FormControl type="email" name="email" placeholder="Enter email" />
+              {' '}
+              <FormControl type="password" name="password" placeholder="Enter password" />
+            </FormGroup>
+            {' '}
+            <Button type="submit">Login</Button>
+          </form>
+        </Navbar.Form>}
       </Navbar.Collapse>
     </Navbar>
   );
