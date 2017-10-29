@@ -7,19 +7,25 @@ import JobFilter from './JobFilter';
 import GoogleMap from '../utilities/GoogleMap';
 import LocalModal from '../utilities/LocalModal';
 
-
 class JobIndex extends React.Component {
 
   state = {
     jobs: [],
+    filteredJobs: [],
     show: false,
-    selectedJob: null
+    selectedJob: null,
+    filterParams: []
   };
 
   openClose = (job) => {
     this.setState(prevState => {
       return { show: !prevState.show, selectedJob: job };
     });
+  }
+
+  handleFilter = (e) => {
+    console.log(e);
+    this.setState({ filterParams: e.target.value }, console.log(this.state.filterParams));
   }
 
   componentWillMount() {
@@ -49,7 +55,8 @@ class JobIndex extends React.Component {
               close={this.openClose}/>}
           </main>
           <section className="col-sm-5">
-            <JobFilter></JobFilter>
+            <JobFilter
+              handleFilter={this.handleFilter}></JobFilter>
             <JobScroller
               jobs={this.state.jobs}
               modal={this.openClose}/>

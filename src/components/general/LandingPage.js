@@ -54,7 +54,7 @@ class LandingPage extends React.Component {
     e.preventDefault();
     Axios.post('/api/register', this.state.newUser)
       .then(() => {
-        this.props.history.push('/login');
+        this.props.history.push('/');
       })
       .catch((err) => this.setState({ errors: err.response.data.errors }));
   }
@@ -65,7 +65,7 @@ class LandingPage extends React.Component {
   // }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return(
       <section>
 

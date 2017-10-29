@@ -3,7 +3,7 @@ import FieldGroup from './FieldGroup';
 import { ButtonToolbar, ControlLabel, ToggleButtonGroup, ToggleButton, FormGroup, FormControl } from 'react-bootstrap';
 
 const RegisterForm = ({ handleChange, certs, centerReg, handleSubmit }) => {
-  console.log(centerReg);
+  // console.log(centerReg);
   return(
     <form className="form" onChange={handleChange} onSubmit={handleSubmit}>
       <h2>Create an Account</h2>

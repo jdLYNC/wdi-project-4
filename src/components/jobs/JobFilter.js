@@ -1,12 +1,12 @@
 import React from 'react';
 import { ButtonToolbar, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 
-const JobFilter = () => {
+const JobFilter = ({ handleFilter }) => {
   return(
     <aside>
       <h2>Filter results</h2>
       <ButtonToolbar>
-        <ToggleButtonGroup type="checkbox" defaultValue={[0, 1, 2, 3, 4, 5]}>
+        <ToggleButtonGroup type="checkbox" defaultValue={[0]} onChange={handleFilter}>
           <ToggleButton value={0}>Divemaster</ToggleButton>
           <ToggleButton value={1}>Assistant Instructor</ToggleButton>
           <ToggleButton value={2}>Open Water Scuba Instructor</ToggleButton>

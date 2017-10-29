@@ -1,5 +1,6 @@
 class Auth {
   static setToken(token) {
+    console.log('setting token', token);
     return localStorage.setItem('token', token);
   }
 
@@ -12,6 +13,7 @@ class Auth {
   }
 
   static logout() {
+    console.log('removing token...');
     localStorage.removeItem('token');
   }
 
