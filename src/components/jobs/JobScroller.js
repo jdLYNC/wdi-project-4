@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 const ScrollContainer = styled.section`
   width: 100%;
-  height: 400px;
+  height: 80vh;
+  background-color: #FAFAFA;
   overflow: scroll;
-  background-color: lightGrey;
+  margin: 5vh 0;
 `;
 
 const JobRow = styled.div`
@@ -27,17 +28,20 @@ const Thumbnail = styled.div`
 
 const JobRowInfo = styled.div`
   margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 
-const JobScroller = ({ jobs }) => {
+const JobScroller = ({ jobs, modal }) => {
   return(
     <ScrollContainer>
       {jobs.map(job => (
-        <JobRow key={job.id}>
+        <JobRow key={job.id} onClick={() => modal(job)}>
           <Thumbnail image={job.center.image}></Thumbnail>
           <JobRowInfo>
-            <h3>{job.center.name}</h3>
+            <p>{job.center.name}</p>
             <p>{job.reqCertLv.title}</p>
           </JobRowInfo>
         </JobRow>

@@ -1,14 +1,26 @@
 import React from 'react';
 import Axios from 'axios';
+import _ from 'lodash';
 
 import JobScroller from './JobScroller';
+import JobFilter from './JobFilter';
 import GoogleMap from '../utilities/GoogleMap';
+import LocalModal from '../utilities/LocalModal';
+
 
 class JobIndex extends React.Component {
 
   state = {
-    jobs: []
+    jobs: [],
+    show: false,
+    selectedJob: null
   };
+
+  openClose = (job) => {
+    this.setState(prevState => {
+      return { show: !prevState.show, selectedJob: job };
+    });
+  }
 
   componentWillMount() {
     Axios
@@ -22,22 +34,25 @@ class JobIndex extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <aside className="col-sm-2">
+          {/* <aside className="col-sm-2">
             Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside
-          </aside>
+          </aside> */}
+          {this.state.selectedJob && <LocalModal
+            show={this.state.show}
+            close={this.openClose}
+            job={this.state.selectedJob}></LocalModal>}
+
           <main className="col-sm-7">
-            <div className="row">
-              <GoogleMap
-                jobs={this.state.jobs} />
-            </div>
-            <div className="row">
-              <JobScroller
-                jobs={this.state.jobs} />
-            </div>
+            { this.state.jobs[1] && <GoogleMap
+              jobs={this.state.jobs}
+              show={this.state.show}
+              close={this.openClose}/>}
           </main>
-          <section className="col-sm-3">
+          <section className="col-sm-5">
+            <JobFilter></JobFilter>
             <JobScroller
-              jobs={this.state.jobs} />
+              jobs={this.state.jobs}
+              modal={this.openClose}/>
           </section>
         </div>
       </div>

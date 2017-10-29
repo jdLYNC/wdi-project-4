@@ -219,3 +219,5 @@ const mapStyles = [
     ]
   }
 ];
+
+export default mapStyles;

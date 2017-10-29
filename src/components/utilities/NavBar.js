@@ -16,7 +16,7 @@ const NavBar = ({ handleChange, handleSubmit }) => {
       <Navbar.Collapse>
         <Nav>
           <LinkContainer to="/jobs"><NavItem>Jobs</NavItem></LinkContainer>
-          <LinkContainer to="/"><NavItem>Messages</NavItem></LinkContainer>
+          <LinkContainer to="/messages"><NavItem>Messages</NavItem></LinkContainer>
         </Nav>
         {!Auth.isAuthenticated() && <Navbar.Form pullRight>
           <form onChange={handleChange} onSubmit={handleSubmit}>

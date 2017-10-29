@@ -87,7 +87,7 @@ class LandingPage extends React.Component {
         <SplashImage image ="assets/images/sam-soffes.jpg" align="center">
           <div className="col-sm-6">
           </div>
-          <div className="col-sm-6">
+          <div className="col-sm-5">
             <RegisterForm
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}

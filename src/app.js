@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   handleSubmit = (e) => {
-    console.log('submitz in this biznitch');
+    console.log('App.js handSubmit running');
     e.preventDefault();
     Axios.post('/api/login', this.state.credentials)
       .then((res) => {
