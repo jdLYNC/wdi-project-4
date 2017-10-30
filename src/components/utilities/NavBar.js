@@ -12,7 +12,8 @@ class NavBar extends React.Component {
       email: '',
       password: ''
     },
-    error: ''
+    error: '',
+    currentUser: Auth.getCurrentUser()
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -26,6 +27,7 @@ class NavBar extends React.Component {
     Axios.post('/api/login', this.state.credentials)
       .then((res) => {
         Auth.setToken(res.data.token);
+        Auth.setCurrentUser(res.data.user);
         this.props.history.push(this.props.history.location.pathname);
       })
       .catch(() => {
@@ -42,6 +44,7 @@ class NavBar extends React.Component {
   };
 
   render() {
+    console.log(this.state);
     return(
       <Navbar collapseOnSelect>
         <Navbar.Header>
@@ -53,7 +56,8 @@ class NavBar extends React.Component {
         <Navbar.Collapse>
           <Nav>
             <LinkContainer to="/jobs"><NavItem>Jobs</NavItem></LinkContainer>
-            <LinkContainer to="/messages"><NavItem>Messages</NavItem></LinkContainer>
+            {Auth.getCurrentUser() && Auth.getCurrentUser().center && <LinkContainer to="/jobs/new"><NavItem>Post Job</NavItem></LinkContainer>}
+            {Auth.isAuthenticated() && <LinkContainer to="/messages"><NavItem>Messages</NavItem></LinkContainer>}
           </Nav>
           {!Auth.isAuthenticated() && <Navbar.Form pullRight>
             <form onChange={this.handleChange} onSubmit={this.handleSubmit}>

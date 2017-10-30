@@ -12,6 +12,15 @@ import './scss/style.scss';
 
 class App extends React.Component {
 
+  componentDidMount() {
+    if(!Auth.getToken()) return false;
+    Axios.get('/api/profile', {
+      headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => Auth.setCurrentUser(res.data))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <Router>

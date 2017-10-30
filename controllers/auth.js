@@ -16,12 +16,37 @@ function login(req, res, next) {
       if(!user || !user.validatePassword(req.body.password)) return res.status(401).json({ message: 'Unauthorized' });
 
       const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '1hr' });
-      return res.status(200).json({ message: `Welcome back ${user.name}`, token });
+      return res.status(200).json({ message: `Welcome back ${user.name}`, token, user });
     })
     .catch(next);
 }
 
+function profile(req, res, next) {
+  User
+    .findById(req.currentUser.id)
+    .then(user => {
+      return res.status(200).json(user);
+    })
+    .catch(next);
+}
+
+function usersShow(req, res, next) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then(user => {
+      if(!user) return res.notFound();
+      res.status(200).json(user);
+    })
+    .catch(err => {
+      console.log(err);
+      next(err);
+    });
+}
+
 module.exports = {
   register,
-  login
+  login,
+  profile,
+  usersShow
 };

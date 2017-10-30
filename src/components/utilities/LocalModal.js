@@ -1,6 +1,8 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import styled from 'styled-components';
+import Auth from '../../lib/Auth';
+import { Link } from 'react-router-dom';
 
 const Thumbnail = styled.div`
   background-image: url(${props => props.image});
@@ -16,7 +18,7 @@ const ThumbnailContainer = styled.div`
   justify-content: center;
 `;
 
-const LocalModal = ({ show, close, job }) => {
+const LocalModal = ({ show, close, job, deleteJob }) => {
   return(
     <Modal
       show={show}
@@ -34,9 +36,14 @@ const LocalModal = ({ show, close, job }) => {
       <Modal.Body>
         {job.description}
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={() => close(job)}>Close</Button>
-      </Modal.Footer>
+      { Auth.isAuthenticated() && <Modal.Footer>
+        { !Auth.getCurrentUser().center && <Link to={`/messages/${job.center.id}`}><Button bsSize="large" block>Apply</Button></Link> }
+        { Auth.getPayload().userId === job.center.id &&
+          <Link to={`/jobs/${job.id}/edit`}>
+            <Button>Edit</Button>
+          </Link> }
+        { Auth.getPayload().userId === job.center.id && <Button onClick={() => deleteJob(job)}>Delete</Button> }
+      </Modal.Footer>}
     </Modal>
   );
 };

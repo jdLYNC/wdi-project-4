@@ -1,0 +1,41 @@
+.messenger {
+  background-color: white;
+  padding: 5vh;
+  border-radius: 5vh;
+  margin: 5vh;
+}
+
+.message-viewer {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  overflow: scroll;
+  background-color: #EEE;
+}
+
+.message {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+  max-width: 80%;
+  position: relative;
+  align-self: flex-start;
+  background-color: white;
+  .message-text {
+    margin: 0;
+  }
+  .delete-message-icon {
+    position: absolute;
+    right: 1px;
+    top: 0;
+    font-size: 1.5em;
+    color: rgba(0,0,0,0.3);
+  }
+}
+
+.message-from-user {
+  background-color: lightBlue;
+  color: black;
+  align-self: flex-end;
+}

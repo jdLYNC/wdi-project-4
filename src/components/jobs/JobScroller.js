@@ -33,10 +33,9 @@ const JobRowInfo = styled.div`
   justify-content: center;
 `;
 
-
 const JobScroller = ({ jobs, modal }) => {
   return(
-    <ScrollContainer>
+    <ScrollContainer onScroll={(e) => console.log(e.nativeEvent.target.children)}>
       {jobs.map(job => (
         <JobRow key={job.id} onClick={() => modal(job)}>
           <Thumbnail image={job.center.image}></Thumbnail>

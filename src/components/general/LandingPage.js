@@ -3,6 +3,7 @@ import Axios from 'axios';
 import styled from 'styled-components';
 import SplashImage from './SplashImage';
 import RegisterForm from '../auth/RegisterForm';
+import Auth from '../../lib/Auth';
 
 const TitleHeader = styled.h2`
   margin-top: 5vh;
@@ -54,6 +55,16 @@ class LandingPage extends React.Component {
     e.preventDefault();
     Axios.post('/api/register', this.state.newUser)
       .then(() => {
+        this.setState({ newUser: {
+          name: '',
+          email: '',
+          password: '',
+          passwordConfirmation: '',
+          center: null,
+          certLv: '',
+          address: '',
+          location: ''}
+        });
         this.props.history.push('/');
       })
       .catch((err) => this.setState({ errors: err.response.data.errors }));
@@ -65,7 +76,6 @@ class LandingPage extends React.Component {
   // }
 
   render() {
-    // console.log(this.state);
     return(
       <section>
 
@@ -88,12 +98,12 @@ class LandingPage extends React.Component {
           <div className="col-sm-6">
           </div>
           <div className="col-sm-5">
-            <RegisterForm
+            {!Auth.isAuthenticated() && <RegisterForm
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
               certs={this.state.certs}
               centerReg={this.state.newUser.center}
-            ></RegisterForm>
+            ></RegisterForm>}
           </div>
         </SplashImage>
 

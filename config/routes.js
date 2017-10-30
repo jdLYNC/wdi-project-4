@@ -33,6 +33,12 @@ router.route('/register')
 router.route('/login')
   .post(auth.login);
 
+router.route('/profile')
+  .get(userRoute(true), auth.profile);
+
+router.route('/users/:id')
+  .get(userRoute(true), auth.usersShow);
+
 router.route('/*')
   .all((req, res) => res.notFound());
 

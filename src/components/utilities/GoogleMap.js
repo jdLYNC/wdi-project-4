@@ -3,26 +3,19 @@ import React from 'react';
 import mapStyles from '../misc/mapStyles';
 
 class GoogleMap extends React.Component {
-  constructor() {
-    super();
 
-    this.state = {
-      markers: []
-    };
+  componentDidUpdate() {
+    this.removeMarkers();
+    this.createMarkers();
   }
 
-  componentDidMount() {
-    this.map = new google.maps.Map(this.mapCanvas, {
-      center: this.props.jobs[0].center.location,
-      zoom: 10,
-      minZoom: 2,
-      styles: mapStyles,
-      backgroundColor: '#a5e8f7',
-      streetViewControl: false,
-      fullscreenControl: false,
-      mapTypeControl: false
-    });
-    const bounds = new google.maps.LatLngBounds();
+  removeMarkers() {
+    this.markers.forEach(marker => marker.setMap(null));
+    this.markers = [];
+  }
+
+  createMarkers() {
+    this.bounds = new google.maps.LatLngBounds();
     this.props.jobs.forEach(job => {
       const newMarker = new google.maps.Marker({
         map: this.map,
@@ -32,23 +25,37 @@ class GoogleMap extends React.Component {
           scaledSize: new google.maps.Size(60, 30)
         }
       });
-      this.state.markers.push(newMarker);
-      bounds.extend(job.center.location);
+      this.markers.push(newMarker);
+      this.bounds.extend(job.center.location);
     });
-    this.map.fitBounds(bounds);
+    this.map.fitBounds(this.bounds);
+  }
+
+  componentDidMount() {
+    this.markers = [];
+    this.map = new google.maps.Map(this.mapCanvas, {
+      center: this.props.jobs[0].center.location || { lat: 51, lng: 0 },
+      zoom: 10,
+      minZoom: 2,
+      styles: mapStyles,
+      backgroundColor: '#a5e8f7',
+      streetViewControl: false,
+      fullscreenControl: false,
+      mapTypeControl: false
+    });
+    this.createMarkers();
   }
 
   componentWillUnmount() {
     console.log('Unmounting map');
-    this.state.markers.forEach(marker => {
-      marker.setMap(null);
-    });
+    this.removeMarkers();
+    this.bounds = null;
     this.map = null;
   }
 
   checkBounds() {
     const bounds = new google.maps.LatLngBounds();
-    this.state.markers.forEach(marker => {
+    this.markers.forEach(marker => {
       // console.log('marker', marker);
       if(!marker.position) return false;
       const latLng = { lat: marker.position.lat(), lng: marker.position.lng() };

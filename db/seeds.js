@@ -6,42 +6,40 @@ const User = require('../models/user');
 const Job = require('../models/job');
 const Message = require('../models/message');
 
-mongoose.connect(dbURI, { useMongoClient: true });
+mongoose.connect(dbURI, { useMongoClient: true })
+  .then(db => db.dropDatabase())
+  .then(() => {
 
-Certification.collection.drop();
-User.collection.drop();
-Job.collection.drop();
-Message.collection.drop();
+    // All required certification data should come from seeds file
+    const certificationData = [{
+      title: 'Divemaster',
+      abbr: 'DM',
+      level: 0
+    }, {
+      title: 'Assistant Instructor',
+      abbr: 'AI',
+      level: 1
+    }, {
+      title: 'Open Water Scuba Instructor',
+      abbr: 'OWSI',
+      level: 2
+    }, {
+      title: 'Master Scuba Diver Trainer',
+      abbr: 'MSDT',
+      level: 3
+    }, {
+      title: 'Staff Instructor',
+      abbr: 'Staff',
+      level: 4
+    }, {
+      title: 'Course Director',
+      abbr: 'CD',
+      level: 5
+    }];
 
-// All required certification data should come from seeds file
-const certificationData = [{
-  title: 'Divemaster',
-  abbr: 'DM',
-  level: 0
-}, {
-  title: 'Assistant Instructor',
-  abbr: 'AI',
-  level: 1
-}, {
-  title: 'Open Water Scuba Instructor',
-  abbr: 'OWSI',
-  level: 2
-}, {
-  title: 'Master Scuba Diver Trainer',
-  abbr: 'MSDT',
-  level: 3
-}, {
-  title: 'Staff Instructor',
-  abbr: 'Staff',
-  level: 4
-}, {
-  title: 'Course Director',
-  abbr: 'CD',
-  level: 5
-}];
-
-Certification
-  .create(certificationData)
+    return Certification
+      .create(certificationData);
+  })
   .then(certLvls => {
     console.log(`${certLvls.length} certification levels created!`);
     const userData = [{
@@ -265,14 +263,34 @@ Certification
           .then(jobs => {
             console.log(`${jobs.length} jobs created!`);
             const messageData = [{
-              from: users[1],
+              from: users[2],
               to: users[0],
               text: 'Hi Josh, welcome to Diveboard!  Are you interested in working at Da Nang Scuba?',
               read: false
             }, {
               from: users[0],
-              to: users[1],
+              to: users[2],
               text: 'Hi Grant!  Yes I am!',
+              read: false
+            }, {
+              from: users[2],
+              to: users[0],
+              text: 'That\'s great!, when can you start?',
+              read: false
+            }, {
+              from: users[0],
+              to: users[2],
+              text: 'Now',
+              read: false
+            }, {
+              from: users[1],
+              to: users[0],
+              text: 'This is a different set of messages',
+              read: false
+            }, {
+              from: users[0],
+              to: users[1],
+              text: 'Hi Jess',
               read: false
             }];
             return Message
