@@ -2,6 +2,7 @@ import React from 'react';
 import FieldGroup from './FieldGroup';
 import { ButtonToolbar, ControlLabel, ToggleButtonGroup, ToggleButton, FormGroup, FormControl } from 'react-bootstrap';
 import PlacesAutocomplete from 'react-places-autocomplete';
+import DragDrop from '../utilities/DragDrop';
 
 const RegisterForm = ({ handleChange, certs, centerReg, handleSubmit, newUser, handleAddressChange, handleSelect }) => {
   // console.log(centerReg);
@@ -67,6 +68,8 @@ const RegisterForm = ({ handleChange, certs, centerReg, handleSubmit, newUser, h
         inputProps={inputProps}
         autocompleteItem={AutocompleteItem}
         onSelect={handleSelect}/>
+
+      <DragDrop onChange={handleChange} value={newUser.image}/>
 
       <button className="btn btn-lg btn-default btn-block">Join Diveboard!</button>
 
