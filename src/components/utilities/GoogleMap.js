@@ -36,7 +36,8 @@ class GoogleMap extends React.Component {
     this.map = new google.maps.Map(this.mapCanvas, {
       center: this.props.jobs[0].center.location || { lat: 51, lng: 0 },
       zoom: 10,
-      minZoom: 2,
+      minZoom: 1,
+      maxZoom: 14,
       styles: mapStyles,
       backgroundColor: '#a5e8f7',
       streetViewControl: false,

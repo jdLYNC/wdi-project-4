@@ -17,6 +17,8 @@ const userSchema = new mongoose.Schema({
   certLv: { type: mongoose.Schema.ObjectId, ref: 'Certification' },
   // Center specific values
   address: { type: String },
+  country: { type: String },
+  region: { type: String },
   location: locationSchema
 }, {
   timestamps: true

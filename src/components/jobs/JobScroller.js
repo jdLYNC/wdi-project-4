@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const ScrollContainer = styled.section`
   width: 100%;
-  height: 80vh;
+  height: 59vh;
   background-color: #FAFAFA;
   overflow: scroll;
   margin: 5vh 0;

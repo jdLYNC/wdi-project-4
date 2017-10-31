@@ -24,15 +24,27 @@ class JobIndex extends React.Component {
     });
   }
 
-  handleFilter = ({ target: { value }}) => {
-    this.setState(prevState => {
-      return {
-        filterParams: _.xor(prevState.filterParams, [parseInt(value)]),
-        filteredJobs: _.filter(this.state.jobs, (job) => {
-          this.state.filterParams.includes(job.reqCertLv.level);
-        }) };
+  handleFilter = ({ target: { value } }) => {
+    if (!value) return null;
+    console.log(value);
+    const filterParams = _.xor(this.state.filterParams, [parseInt(value)]);
+    const filteredJobs = this.state.jobs.filter(job => {
+      return filterParams.includes(job.reqCertLv.level);
     });
+    console.log(filteredJobs);
+    this.setState({ filterParams, filteredJobs }, () => console.log(this.state.filteredJobs));
   }
+
+  // handleFilter = ({ target: { value }}) => {
+  //   console.log(value);
+  //   this.setState(prevState => {
+  //     return {
+  //       filterParams: _.xor(prevState.filterParams, [parseInt(value)]),
+  //       filteredJobs: _.filter(this.state.jobs, (job) => {
+  //         this.state.filterParams.includes(job.reqCertLv.level);
+  //       }) };
+  //   });
+  // }
 
   // handleFilter2 = () => {
   //   console.log(this.state.filterParams);
@@ -56,9 +68,15 @@ class JobIndex extends React.Component {
   }
 
   componentWillMount() {
+
     Axios
       .get('/api/jobs')
       .then(res => this.setState({ jobs: res.data, filteredJobs: res.data }))
+      .catch(err => console.log(err));
+
+    Axios
+      .get('/api/certifications')
+      .then(res => this.setState({ certs: res.data }))
       .catch(err => console.log(err));
   }
 
@@ -82,8 +100,10 @@ class JobIndex extends React.Component {
               close={this.openClose}/>}
           </main>
           <section className="col-sm-5">
-            <JobFilter
-              handleFilter={this.handleFilter}></JobFilter>
+            { this.state.certs && <JobFilter
+              handleFilter={this.handleFilter}
+              certs={this.state.certs}
+              filterParams={this.state.filterParams}></JobFilter>}
             <JobScroller
               jobs={this.state.filteredJobs}
               modal={this.openClose}/>
