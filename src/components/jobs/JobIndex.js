@@ -75,7 +75,7 @@ class JobIndex extends React.Component {
       .get('/api/jobs')
       .then(res => {
         let countries = res.data.map(job => {
-          return { value: job.center.iso, label: job.center.country };
+          return { value: job.center.country, label: job.center.country };
         });
         let regions = res.data.map(job => {
           return { value: job.center.region, label: job.center.region };

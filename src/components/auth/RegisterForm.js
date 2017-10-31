@@ -1,9 +1,19 @@
 import React from 'react';
 import FieldGroup from './FieldGroup';
 import { ButtonToolbar, ControlLabel, ToggleButtonGroup, ToggleButton, FormGroup, FormControl } from 'react-bootstrap';
+import PlacesAutocomplete from 'react-places-autocomplete';
 
-const RegisterForm = ({ handleChange, certs, centerReg, handleSubmit }) => {
+const RegisterForm = ({ handleChange, certs, centerReg, handleSubmit, newUser, handleAddressChange, handleSelect }) => {
   // console.log(centerReg);
+
+  const inputProps = {
+    name: 'address',
+    value: newUser.address,
+    onChange: handleAddressChange
+  };
+
+  const AutocompleteItem = ({ suggestion }) => (<div><i className="fa fa-map-marker"/>{suggestion}</div>);
+
   return(
     <form className="form" onChange={handleChange} onSubmit={handleSubmit}>
       <h2>Create an Account</h2>
@@ -53,12 +63,10 @@ const RegisterForm = ({ handleChange, certs, centerReg, handleSubmit }) => {
         </FormControl>
       </FormGroup>}
 
-      { centerReg && <FieldGroup
-        name="address"
-        type="text"
-        label="Address"
-        placeholder="198-76 Blue Lagoon, Laguna Beach, CA 92651"
-      />}
+      <PlacesAutocomplete
+        inputProps={inputProps}
+        autocompleteItem={AutocompleteItem}
+        onSelect={handleSelect}/>
 
       <button className="btn btn-lg btn-default btn-block">Join Diveboard!</button>
 

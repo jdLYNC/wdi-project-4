@@ -204,7 +204,7 @@ mongoose.connect(dbURI, { useMongoClient: true })
       center: true,
       address: 'Polrudden House, Peerie Sea Loan, Kirkwall, Orkney, KW15 1UH',
       iso: 'GB',
-      country: 'Great Britain',
+      country: 'United Kingdom',
       region: 'Europe',
       location: {
         lat: 58.98462,
@@ -219,7 +219,7 @@ mongoose.connect(dbURI, { useMongoClient: true })
       center: true,
       address: '11 Power Rd, Chiswick, London W4 5PT',
       iso: 'GB',
-      country: 'Great Britain',
+      country: 'United Kingdom',
       region: 'Europe',
       location: {
         lat: 51.4936916,
