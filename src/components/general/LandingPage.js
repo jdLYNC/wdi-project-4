@@ -51,6 +51,14 @@ class LandingPage extends React.Component {
   }
 
   handleSubmit = (e) => {
+    Axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+      query: {
+        address: this.state.newUser.address
+      },
+      key: 'AIzaSyAKoE_jY6PNxyupg_GsKz80YLv0wfChnGs'
+    })
+      .then(res => console.log(res));
+
     console.log('submitting');
     e.preventDefault();
     Axios.post('/api/register', this.state.newUser)

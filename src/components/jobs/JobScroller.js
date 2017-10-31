@@ -40,8 +40,8 @@ const JobScroller = ({ jobs, modal }) => {
         <JobRow key={job.id} onClick={() => modal(job)}>
           <Thumbnail image={job.center.image}></Thumbnail>
           <JobRowInfo>
-            <p>{job.center.name}</p>
-            <p>{job.reqCertLv.title}</p>
+            <p><strong>{job.reqCertLv.title}</strong></p>
+            <p>{job.center.country}</p>
           </JobRowInfo>
         </JobRow>
       ))}

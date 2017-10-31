@@ -15,7 +15,11 @@ class JobIndex extends React.Component {
     filteredJobs: [],
     show: false,
     selectedJob: null,
-    filterParams: [0, 1, 2, 3, 4, 5]
+    filterParams: [0, 1, 2, 3, 4, 5],
+    countries: [],
+    selectedCountries: [],
+    regions: [],
+    selectedRegions: []
   };
 
   openClose = (job) => {
@@ -24,35 +28,33 @@ class JobIndex extends React.Component {
     });
   }
 
-  handleFilter = ({ target: { value } }) => {
+  setJobFilter = ( { target: { value } }) => {
     if (!value) return null;
-    console.log(value);
     const filterParams = _.xor(this.state.filterParams, [parseInt(value)]);
-    const filteredJobs = this.state.jobs.filter(job => {
-      return filterParams.includes(job.reqCertLv.level);
-    });
-    console.log(filteredJobs);
-    this.setState({ filterParams, filteredJobs }, () => console.log(this.state.filteredJobs));
+    this.setState({ filterParams }, () => this.handleFilter());
   }
 
-  // handleFilter = ({ target: { value }}) => {
-  //   console.log(value);
-  //   this.setState(prevState => {
-  //     return {
-  //       filterParams: _.xor(prevState.filterParams, [parseInt(value)]),
-  //       filteredJobs: _.filter(this.state.jobs, (job) => {
-  //         this.state.filterParams.includes(job.reqCertLv.level);
-  //       }) };
-  //   });
-  // }
+  setCountryFilter = (value) => {
+    this.setState({ selectedCountries: value }, () => this.handleFilter());
+  }
 
-  // handleFilter2 = () => {
-  //   console.log(this.state.filterParams);
-  //   console.log('handleFilter2, the rehandling');
-  //   this.setState({ filteredJobs: _.filter(this.state.jobs, job => {
-  //     this.state.filterParams.includes(job.reqCertLv.level);
-  //   })});
-  // }
+  setRegionFilter = (value) => {
+    this.setState({ selectedRegions: value }, () => this.handleFilter());
+  }
+
+  handleFilter = () => {
+    const selectedLocations = this.state.selectedCountries.concat(this.state.selectedRegions);
+    const filteredJobs = this.state.jobs.filter(job => {
+      return (
+        (this.state.filterParams.includes(job.reqCertLv.level)
+        || this.state.filterParams.length < 1)
+        && (selectedLocations.find(location => location.label === job.center.country
+        || location.label === job.center.region)
+        || selectedLocations.length < 1)
+      );
+    });
+    this.setState({ filteredJobs });
+  }
 
   deleteJob = (job) => {
     Axios
@@ -71,7 +73,23 @@ class JobIndex extends React.Component {
 
     Axios
       .get('/api/jobs')
-      .then(res => this.setState({ jobs: res.data, filteredJobs: res.data }))
+      .then(res => {
+        let countries = res.data.map(job => {
+          return { value: job.center.iso, label: job.center.country };
+        });
+        let regions = res.data.map(job => {
+          return { value: job.center.region, label: job.center.region };
+        });
+        countries = _.uniqBy(countries, 'value');
+        countries = _.sortBy(countries, ['label']);
+        regions = _.uniqBy(regions, 'value');
+        regions = _.sortBy(regions, ['label']);
+        this.setState({
+          jobs: res.data,
+          filteredJobs: res.data,
+          countries: countries,
+          regions: regions });
+      })
       .catch(err => console.log(err));
 
     Axios
@@ -81,12 +99,10 @@ class JobIndex extends React.Component {
   }
 
   render() {
+    console.log('selectedRegions ===>>>', this.state.selectedRegions);
     return (
       <div className="container">
         <div className="row">
-          {/* <aside className="col-sm-2">
-            Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside Aside
-          </aside> */}
           {this.state.selectedJob && <LocalModal
             show={this.state.show}
             close={this.openClose}
@@ -101,9 +117,15 @@ class JobIndex extends React.Component {
           </main>
           <section className="col-sm-5">
             { this.state.certs && <JobFilter
-              handleFilter={this.handleFilter}
+              setJobFilter={this.setJobFilter}
               certs={this.state.certs}
-              filterParams={this.state.filterParams}></JobFilter>}
+              filterParams={this.state.filterParams}
+              countries={this.state.countries}
+              setCountryFilter={this.setCountryFilter}
+              selectedCountries={this.state.selectedCountries}
+              regions={this.state.regions}
+              setRegionFilter={this.setRegionFilter}
+              selectedRegions={this.state.selectedRegions}></JobFilter>}
             <JobScroller
               jobs={this.state.filteredJobs}
               modal={this.openClose}/>

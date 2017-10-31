@@ -68,7 +68,8 @@ mongoose.connect(dbURI, { useMongoClient: true })
       image: 'http://danangscuba.com/staging/wp-content/uploads/2016/04/danang-scuba-logo-1.png',
       center: true,
       address: '40, Lê Lộ, Mỹ An, Ngũ Hành Sơn, Đà Nẵng, Vietnam',
-      country: 'VN',
+      iso: 'VN',
+      country: 'Viet Nam',
       region: 'Asia',
       location: {
         lat: 16.0535926,
@@ -82,7 +83,8 @@ mongoose.connect(dbURI, { useMongoClient: true })
       image: 'http://www.divesydney.com.au/wp-content/uploads/2014/07/logo.jpg',
       center: true,
       address: '10 Belgrave St, Manly NSW 2095, Australia',
-      country: 'AU',
+      iso: 'AU',
+      country: 'Australia',
       region: 'Oceania',
       location: {
         lat: -33.797362,
@@ -96,7 +98,8 @@ mongoose.connect(dbURI, { useMongoClient: true })
       image: 'http://www.gozo-tauchen.de/atlan3.JPG',
       center: true,
       address: 'Triq Il-Qolla Is-Safra, Marsalforn, Gozo, Iż-Żebbuġ MFN 1405, Malta',
-      country: 'MT',
+      iso: 'MT',
+      country: 'Malta',
       region: 'Europe',
       location: {
         lat: 36.0728912,
@@ -110,7 +113,8 @@ mongoose.connect(dbURI, { useMongoClient: true })
       image: 'http://www.latchiwatersportscentre.com/wp-content/uploads/2016/02/logo-latchi-watersports-3.png',
       center: true,
       address: 'Latchi Lighthouse, Poli Crysochous 8830, Cyprus',
-      country: 'CY',
+      iso: 'CY',
+      country: 'Cyprus',
       region: 'Europe',
       location: {
         lat: 35.040948,
@@ -124,7 +128,8 @@ mongoose.connect(dbURI, { useMongoClient: true })
       image: 'http://www.bansdivingresortkohtao.com/images/logo-bans-3.png',
       center: true,
       address: 'Ko Tao, อำเภอ เกาะพงัน Surat Thani 84360, Thailand',
-      country: 'TH',
+      iso: 'TH',
+      country: 'Thailand',
       region: 'Asia',
       location: {
         lat: 10.095895,
@@ -138,7 +143,8 @@ mongoose.connect(dbURI, { useMongoClient: true })
       image: 'http://www.flipperdiving.com/Vietnam/wp-content/uploads/2014/09/logo-flipper-diving-club-vietnam-phu-quoc-420.png',
       center: true,
       address: '60 Trần Hưng Đạo, Khu 1, tt. Dương Đông, Tp. Phú Quốc, tỉnh Kiên Giang, Vietnam',
-      country: 'VN',
+      iso: 'VN',
+      country: 'Viet Nam',
       region: 'Asia',
       location: {
         lat: 10.2124674,
@@ -152,7 +158,8 @@ mongoose.connect(dbURI, { useMongoClient: true })
       image: 'http://www.world-diving.com/wp-content/uploads/2015/04/worlddiving-lembongan-403x70.png',
       center: true,
       address: 'Pondok Baruna, Jungutbatu, Nusapenida, Kabupaten Klungkung, Bali 80771, Indonesia',
-      country: 'ID',
+      iso: 'ID',
+      country: 'Indonesia',
       region: 'Asia',
       location: {
         lat: -8.673104,
@@ -166,7 +173,8 @@ mongoose.connect(dbURI, { useMongoClient: true })
       image: 'https://www.sundive.com.au/wp-content/uploads/2016/10/logo-sundive-byron-bay-250.jpg',
       center: true,
       address: '11/8 Middleton St, Byron Bay NSW 2481, Australia',
-      country: 'AU',
+      iso: 'AU',
+      country: 'Australia',
       region: 'Oceania',
       location: {
         lat: -28.643716,
@@ -180,7 +188,8 @@ mongoose.connect(dbURI, { useMongoClient: true })
       image: 'http://jettydive.com.au/wp-content/uploads/2014/10/jetty-logo.png',
       center: true,
       address: '398 Harbour Dr, Coffs Harbour NSW 2450, Australia',
-      country: 'AU',
+      iso: 'AU',
+      country: 'Australia',
       region: 'Oceania',
       location: {
         lat: -30.30386,
@@ -194,7 +203,8 @@ mongoose.connect(dbURI, { useMongoClient: true })
       image: 'http://www.scapaflow.com/templates/Base_Template/images/header-object.png',
       center: true,
       address: 'Polrudden House, Peerie Sea Loan, Kirkwall, Orkney, KW15 1UH',
-      country: 'GB',
+      iso: 'GB',
+      country: 'Great Britain',
       region: 'Europe',
       location: {
         lat: 58.98462,
@@ -208,7 +218,8 @@ mongoose.connect(dbURI, { useMongoClient: true })
       image: 'https://i2.wp.com/abbottsgroup.co.uk/wp-content/uploads/2015/02/Abbotts-Group-London-School-of-Diving.jpg',
       center: true,
       address: '11 Power Rd, Chiswick, London W4 5PT',
-      country: 'GB',
+      iso: 'GB',
+      country: 'Great Britain',
       region: 'Europe',
       location: {
         lat: 51.4936916,
@@ -222,7 +233,8 @@ mongoose.connect(dbURI, { useMongoClient: true })
       image: 'http://divescover.com/images/center/2/1/6/3/5/21635_b.jpg',
       center: true,
       address: 'Shop 5/178 Albion Rd, Windsor QLD 4030, Australia',
-      country: 'AU',
+      iso: 'AU',
+      country: 'Australia',
       region: 'Oceania',
       location: {
         lat: -27.429123,

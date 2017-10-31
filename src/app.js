@@ -8,6 +8,7 @@ import Routes from './components/misc/Routes';
 import NavBar from './components/utilities/NavBar';
 
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-select/dist/react-select.css';
 import './scss/style.scss';
 
 class App extends React.Component {
