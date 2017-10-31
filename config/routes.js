@@ -3,6 +3,7 @@ const jobs = require('../controllers/jobs');
 const certifications = require('../controllers/certifications');
 const messages = require('../controllers/messages');
 const auth  = require('../controllers/auth');
+const oauth  = require('../controllers/oauth');
 const userRoute = require('../lib/secureRoute');
 
 router.route('/jobs')
@@ -33,11 +34,15 @@ router.route('/register')
 router.route('/login')
   .post(auth.login);
 
+
 router.route('/profile')
   .get(userRoute(true), auth.profile);
 
 router.route('/users/:id')
   .get(userRoute(true), auth.usersShow);
+
+router.route('/oauth/facebook')
+  .post(oauth.facebook);
 
 router.route('/*')
   .all((req, res) => res.notFound());

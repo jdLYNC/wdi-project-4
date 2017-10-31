@@ -4,6 +4,8 @@ import { Navbar, Nav, NavItem, FormGroup, FormControl, Button } from 'react-boot
 import { Link, withRouter } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import Auth from '../../lib/Auth';
+import OAuthButton from '../auth/OAuthButton';
+
 
 class NavBar extends React.Component {
 
@@ -68,6 +70,7 @@ class NavBar extends React.Component {
               </FormGroup>
               {' '}
               <Button type="submit">Login</Button>
+              <OAuthButton provider="facebook"><i className="fa fa-facebook-square" aria-hidden="true"></i></OAuthButton>
             </form>
           </Navbar.Form>}
           {Auth.isAuthenticated() && <Nav pullRight>

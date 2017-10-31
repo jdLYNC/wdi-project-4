@@ -10,10 +10,11 @@ const userSchema = new mongoose.Schema({
   // Shared user values
   name: { type: String, required: 'Username is required' },
   email: { type: String, required: 'Email is required', unique: 'That email has already been taken' },
-  password: { type: String, required: 'Password is required' },
+  password: { type: String },
   image: { type: String },
   center: { type: Boolean, required: true },
   // Diver specific values
+  facebookId: { type: Number },
   certLv: { type: mongoose.Schema.ObjectId, ref: 'Certification' },
   // Center specific values
   address: { type: String },
@@ -32,6 +33,9 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
+  if(!this.password && !this.facebookId) {
+    this.invalidate('password', 'Password is required');
+  }
   if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
     this.invalidate('passwordConfirmation', 'Passwords do not match');
   }
