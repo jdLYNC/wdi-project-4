@@ -29,7 +29,8 @@ class JobsNew extends React.Component {
       center: Auth.getPayload().userId,
       reqCertLv: ''
     },
-    certs: []
+    certs: [],
+    errors: {}
   };
 
   componentWillMount() {
@@ -41,7 +42,8 @@ class JobsNew extends React.Component {
 
   handleChange = ({ target: { name, value } }) => {
     const newJob = Object.assign({}, this.state.newJob, { [name]: value });
-    this.setState({ newJob });
+    const errors = {};
+    this.setState({ newJob, errors });
   }
 
   handleSubmit = (e) => {
@@ -52,10 +54,11 @@ class JobsNew extends React.Component {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
       .then(() => this.props.history.push('/jobs'))
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render() {
+    console.log(this.state);
     return (
       <Background>
         <div className="container">
@@ -64,13 +67,19 @@ class JobsNew extends React.Component {
               <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <ControlLabel>What level instructor do you require?</ControlLabel>
-                  <FormControl componentClass="select" name="reqCertLv">
+                  <FormControl componentClass="select" name="reqCertLv" defaultValue={false}>
+                    <option value={false} disabled>Select the required certification level</option>
                     {this.state.certs.map(cert => <option key={cert.id} value={cert.id}>{cert.title}</option>)}
                   </FormControl>
                 </FormGroup>
+                {this.state.errors.reqCertLv && <small className="error-text">Please select the required instructor level</small>}
                 <FormGroup>
                   <ControlLabel>Describe the role</ControlLabel>
-                  <FormControl componentClass="textarea" name="description" style={{height: '30vh' }}/>
+                  <FormControl
+                    componentClass="textarea"
+                    name="description"
+                    style={{height: '30vh' }}
+                    placeholder={this.state.errors.description ? this.state.errors.description : 'Enter job description'}/>
                 </FormGroup>
                 <button className="btn btn-lg btn-default btn-block">Post job!</button>
               </Form>

@@ -9,7 +9,11 @@ const Form = styled.form`
   border-radius: 5vh;
 `;
 
-const JobForm = ({ handleChange, handleSubmit, certs, job }) => {
+
+const JobForm = ({ handleChange, handleSubmit, certs, job, errors }) => {
+
+  const formInvalid = Object.keys(errors).some(key => errors[key]);
+
   return(
     <Form onSubmit={handleSubmit}>
       <FormGroup>
@@ -18,11 +22,12 @@ const JobForm = ({ handleChange, handleSubmit, certs, job }) => {
           {certs.map(cert => <option key={cert.id} value={cert.id}>{cert.title}</option>)}
         </FormControl>
       </FormGroup>
+      {errors.reqCertLv && <small className="error-text">Please select the required instructor level</small>}
       <FormGroup>
         <ControlLabel>Describe the role</ControlLabel>
-        <FormControl componentClass="textarea" name="description" style={{height: '30vh' }} value={job.description} onChange={handleChange}/>
+        <FormControl componentClass="textarea" name="description" style={{height: '30vh' }} value={job.description} onChange={handleChange} placeholder={errors.description ? errors.description : 'Enter job description'}/>
       </FormGroup>
-      <button className="btn btn-lg btn-default btn-block">Post job!</button>
+      <button className="btn btn-lg btn-default btn-block" disabled={formInvalid}>Post job!</button>
     </Form>
   );
 };

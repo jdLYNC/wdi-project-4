@@ -18,7 +18,8 @@ class JobsEdit extends React.Component {
 
   state = {
     job: {},
-    certs: []
+    certs: [],
+    errors: {}
   };
 
   componentWillMount() {
@@ -35,7 +36,8 @@ class JobsEdit extends React.Component {
 
   handleChange = ({ target: { name, value } }) => {
     const job = Object.assign({}, this.state.job, { [name]: value });
-    this.setState({ job }, () => console.log(this.state.job));
+    const errors = {};
+    this.setState({ job, errors }, () => console.log(this.state.job));
   }
 
   handleSubmit = (e) => {
@@ -46,7 +48,7 @@ class JobsEdit extends React.Component {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
       .then(() => this.props.history.push('/jobs'))
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render() {
@@ -59,7 +61,8 @@ class JobsEdit extends React.Component {
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
                 certs={this.state.certs}
-                job={this.state.job}/>}
+                job={this.state.job}
+                errors={this.state.errors}/>}
             </div>
           </div>
         </div>

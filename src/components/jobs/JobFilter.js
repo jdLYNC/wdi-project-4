@@ -20,7 +20,7 @@ const JobFilter = ({ setJobFilter, certs, filterParams, countries, selectedCount
         multi={true}
         options={regions}
         onChange={setRegionFilter}
-        disabled={selectedCountries[0]}
+        disabled={!!selectedCountries[0]}
       />
       <Select
         placeholder="Select Country"
@@ -29,7 +29,7 @@ const JobFilter = ({ setJobFilter, certs, filterParams, countries, selectedCount
         options={countries}
         multi={true}
         onChange={setCountryFilter}
-        disabled={selectedRegions[0]}
+        disabled={!!selectedRegions[0]}
       />
     </aside>
   );

@@ -6,7 +6,6 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Auth from '../../lib/Auth';
 import OAuthButton from '../auth/OAuthButton';
 
-
 class NavBar extends React.Component {
 
   state = {
@@ -18,9 +17,11 @@ class NavBar extends React.Component {
     currentUser: Auth.getCurrentUser()
   };
 
+
   handleChange = ({ target: { name, value } }) => {
     const credentials = Object.assign({}, this.state.credentials, { [name]: value });
-    this.setState({ credentials });
+    const error = '';
+    this.setState({ credentials, error });
   }
 
   handleSubmit = (e) => {
@@ -32,10 +33,9 @@ class NavBar extends React.Component {
         Auth.setCurrentUser(res.data.user);
         this.props.history.push(this.props.history.location.pathname);
       })
-      .catch(() => {
-        console.log('catch block firing');
+      .catch(err => {
         Auth.logout();
-        this.setState({ error: 'Unrecognized credentials' });
+        this.setState({ error: err.response.data });
       });
   }
 
@@ -62,16 +62,27 @@ class NavBar extends React.Component {
             {Auth.isAuthenticated() && <LinkContainer to="/messages"><NavItem>Messages</NavItem></LinkContainer>}
           </Nav>
           {!Auth.isAuthenticated() && <Navbar.Form pullRight>
-            <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+            <form onChange={this.handleChange} onSubmit={this.handleSubmit} noValidate>
               <FormGroup>
-                <FormControl type="email" name="email" placeholder="Enter email" />
+                {/* {this.state.error.message {this.state.error.message}} */}
+
+                <FormControl
+                  type="email"
+                  name="email"
+                  placeholder={ this.state.error.field === 'email' ? this.state.error.message : 'Enter email'} />
                 {' '}
-                <FormControl type="password" name="password" placeholder="Enter password" />
+                <FormControl
+                  type="password"
+                  name="password"
+                  placeholder={ this.state.error.field === 'password' ? this.state.error.message : 'Enter password'} />
               </FormGroup>
               {' '}
-              <Button type="submit">Login</Button>
+              <Button type="submit" disabled={!!this.state.error}>Login</Button>
               <OAuthButton provider="facebook"><i className="fa fa-facebook-square" aria-hidden="true"></i></OAuthButton>
             </form>
+            {this.state.error.field ? <div className="error-window">
+              <small>{this.state.error.message}</small>
+            </div> : ''}
           </Navbar.Form>}
           {Auth.isAuthenticated() && <Nav pullRight>
             <NavItem onClick={this.logout}>Logout</NavItem>

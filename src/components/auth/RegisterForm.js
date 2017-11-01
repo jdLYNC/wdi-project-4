@@ -17,7 +17,7 @@ const RegisterForm = ({ handleChange, certs, handleSubmit, newUser, handleAddres
 
   const AutocompleteItem = ({ suggestion }) => (<div><i className="fa fa-map-marker"/>{suggestion}</div>);
 
-  console.log('newUser.center', newUser.center);
+  // console.log('newUser.center', newUser.center);
   return(
     <form className="form" onChange={handleChange} onSubmit={handleSubmit} noValidate>
       <h2>Create an Account</h2>
@@ -72,7 +72,8 @@ const RegisterForm = ({ handleChange, certs, handleSubmit, newUser, handleAddres
 
       { !newUser.center && <FormGroup>
         <ControlLabel>Certification Level</ControlLabel>
-        <FormControl componentClass="select" name="certLv">
+        <FormControl componentClass="select" name="certLv" defaultValue={false}>
+          <option value={false} disabled>Select your certification level</option>
           {certs.map(cert => (
             <option key={cert.id} value={cert.id}>{cert.title}</option>
           ))}
