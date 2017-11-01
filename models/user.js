@@ -36,7 +36,7 @@ userSchema.pre('validate', function checkPassword(next) {
   if(!this.password && !this.facebookId) {
     this.invalidate('password', 'Password is required');
   }
-  if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
+  if(this.isModified('password') && this._passwordConfirmation !== this.password) {
     this.invalidate('passwordConfirmation', 'Passwords do not match');
   }
   next();
