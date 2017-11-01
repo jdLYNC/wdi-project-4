@@ -5,6 +5,7 @@ const messages = require('../controllers/messages');
 const auth  = require('../controllers/auth');
 const oauth  = require('../controllers/oauth');
 const userRoute = require('../lib/secureRoute');
+const imageUpload = require('../lib/imageUpload');
 
 router.route('/jobs')
   .get(jobs.index)
@@ -29,7 +30,7 @@ router.route('/messages/:id')
   .delete(userRoute(true), messages.delete);
 
 router.route('/register')
-  .post(auth.register);
+  .post(imageUpload, auth.register);
 
 router.route('/login')
   .post(auth.login);

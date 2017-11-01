@@ -31,7 +31,7 @@ function facebook(req, res, next) {
         .then(user => {
           if(!user) {
             user = new User({
-              username: profile.name,
+              name: profile.name,
               facebookId: profile.id,
               image: profile.picture.data.url
             });

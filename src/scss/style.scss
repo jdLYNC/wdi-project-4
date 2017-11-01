@@ -25,4 +25,25 @@
   position: absolute;
 }
 
+div.drag-drop {
+  input[type=file] {
+    display: none;
+  }
+
+  div.dropzone {
+    margin: 10px auto;
+    height: 100px;
+    width: 200px;
+    background-color: #fafafa;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+.error-text {
+  position: relative;
+  top: -15px;
+  color: #DD0000;
+}
+
 //  #022241 #154a6b #000000

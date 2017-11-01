@@ -30,13 +30,14 @@ class LandingPage extends React.Component {
       email: '',
       password: '',
       passwordConfirmation: '',
-      center: null,
+      center: false,
       // certLv: '',
       address: '',
       location: ''
     },
     locationDetails: {},
-    certs: []
+    certs: [],
+    errors: {}
   };
 
 
@@ -47,9 +48,11 @@ class LandingPage extends React.Component {
       .catch(err => console.log(err));
   }
 
-  handleChange = ({ target: { name, value }}) => {
+  handleChange = ({ target: { name, value } }) => {
+    if(name.match('center')) value = Boolean(value);
     const newUser = Object.assign({}, this.state.newUser, { [name]: value });
-    this.setState({ newUser }, () => console.log(this.state.newUser));
+    const errors = Object.assign({}, this.state.errors, { [name]: '' });
+    this.setState({ newUser, errors }, () => console.log(this.state.newUser));
   }
 
   handleAddressChange = (address) => {
@@ -140,8 +143,8 @@ class LandingPage extends React.Component {
           center: null,
           certLv: '',
           address: '',
-          location: ''}
-        });
+          location: ''
+        } });
         this.props.history.push('/');
       })
       .catch((err) => this.setState({ errors: err.response.data.errors }));
@@ -153,7 +156,6 @@ class LandingPage extends React.Component {
   // }
 
   render() {
-    console.log(this.state.newUser);
     return(
       <section>
 
@@ -184,6 +186,7 @@ class LandingPage extends React.Component {
               newUser={this.state.newUser}
               handleAddressChange={this.handleAddressChange}
               handleSelect={this.handleSelect}
+              errors={this.state.errors}
             ></RegisterForm>}
           </div>
         </SplashImage>
