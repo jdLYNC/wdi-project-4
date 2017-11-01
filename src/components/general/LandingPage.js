@@ -155,7 +155,6 @@ class LandingPage extends React.Component {
   // }
 
   render() {
-    console.log(this.state.newUser);
     return(
       <section>
 
