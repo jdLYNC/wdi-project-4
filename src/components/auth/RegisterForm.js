@@ -17,6 +17,7 @@ const RegisterForm = ({ handleChange, certs, handleSubmit, newUser, handleAddres
 
   const AutocompleteItem = ({ suggestion }) => (<div><i className="fa fa-map-marker"/>{suggestion}</div>);
 
+  console.log(newUser.center);
   return(
     <form className="form" onChange={handleChange} onSubmit={handleSubmit} noValidate>
       <h2>Create an Account</h2>
@@ -62,7 +63,7 @@ const RegisterForm = ({ handleChange, certs, handleSubmit, newUser, handleAddres
           <ToggleButtonGroup
             type="radio"
             name="center"
-            value={newUser.center}>
+            defaultValue={false}>
             <ToggleButton value={false}>Diver</ToggleButton>
             <ToggleButton value={true}>Dive Center</ToggleButton>
           </ToggleButtonGroup>
