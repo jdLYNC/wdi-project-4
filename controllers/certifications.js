@@ -16,10 +16,7 @@ function certificationsShow(req, res, next) {
       if(!certification) return res.notFound();
       res.status(200).json(certification);
     })
-    .catch(err => {
-      console.log(err);
-      next(err);
-    });
+    .catch(next);
 }
 
 module.exports = {

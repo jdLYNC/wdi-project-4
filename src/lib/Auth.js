@@ -2,12 +2,10 @@ class Auth {
   static currentUser = null;
 
   static setToken(token) {
-    console.log('setting token', token);
     return localStorage.setItem('token', token);
   }
 
   static setCurrentUser(user) {
-    console.log('setting current user', user);
     this.currentUser = user;
   }
 
@@ -25,7 +23,6 @@ class Auth {
 
   static logout() {
     this.currentUser = null;
-    console.log('unsetting current user', this.currentUser);
     localStorage.removeItem('token');
   }
 

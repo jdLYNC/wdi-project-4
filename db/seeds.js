@@ -299,34 +299,34 @@ mongoose.connect(dbURI, { useMongoClient: true })
           .then(jobs => {
             console.log(`${jobs.length} jobs created!`);
             const messageData = [{
-              from: users[2],
-              to: users[0],
-              text: 'Hi Josh, welcome to Diveboard!  Are you interested in working at Da Nang Scuba?',
-              read: false
-            }, {
               from: users[0],
               to: users[2],
-              text: 'Hi Grant!  Yes I am!',
+              text: 'Hi, I see you\'re looking for OWSI\'s to join your team in Vietnam.  I\'m interested!',
               read: false
             }, {
               from: users[2],
               to: users[0],
-              text: 'That\'s great!, when can you start?',
+              text: 'Hi Josh, that\'s great, have you got experience diving in Asia?',
               read: false
             }, {
               from: users[0],
               to: users[2],
-              text: 'Now',
+              text: 'Yes',
               read: false
             }, {
-              from: users[1],
+              from: users[2],
               to: users[0],
-              text: 'This is a different set of messages',
+              text: 'Make haste! Our center will surely fail without you!',
               read: false
             }, {
               from: users[0],
-              to: users[1],
-              text: 'Hi Jess',
+              to: users[5],
+              text: 'Hi, I see you\'re looking for OWSI\'s to join your team.  I\'m interested!',
+              read: false
+            }, {
+              from: users[5],
+              to: users[0],
+              text: 'Hi Josh, thanks for your interest, when can you start?',
               read: false
             }];
             return Message

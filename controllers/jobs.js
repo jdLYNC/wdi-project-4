@@ -25,10 +25,7 @@ function jobsShow(req, res, next) {
       if(!job) return res.notFound();
       res.status(200).json(job);
     })
-    .catch(err => {
-      console.log(err);
-      next(err);
-    });
+    .catch(next);
 }
 
 function jobsUpdate(req, res, next) {

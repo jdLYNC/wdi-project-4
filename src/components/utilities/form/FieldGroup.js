@@ -1,12 +1,12 @@
 import React from 'react';
 import { FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 
-const FieldGroup = ({ label, help, ...props }) => {
+const FieldGroup = ({ label, error, ...props }) => {
   return(
-    <FormGroup>
+    <FormGroup validationState={ error ? 'error' : null }>
       <ControlLabel>{label}</ControlLabel>
       <FormControl {...props} />
-      {help && <HelpBlock>{help}</HelpBlock>}
+      {error && <HelpBlock>{error}</HelpBlock>}
     </FormGroup>
   );
 };

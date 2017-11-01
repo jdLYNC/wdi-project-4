@@ -1,17 +1,14 @@
 import queryString from 'query-string';
 
 class OAuth {
-  // create a settings object for each of the providers you wish to support
-  // tip: you can lift this almost directly from the satellizer docs: https://github.com/sahat/satellizer#configuration
   static providers = [{
     name: 'facebook',
     url: '/api/oauth/facebook',
     authEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
     scope: 'email',
-    clientId: 134361900536608 // paste your Facebook Client ID here
+    clientId: 134361900536608
   }];
 
-  // method to generate the correct href for the oAuth popup, based on the current URL in the address bar
   static getAuthLink(provider) {
     const qs = {
       scope: provider.scope,
@@ -22,7 +19,6 @@ class OAuth {
     return `${provider.authEndpoint}?${queryString.stringify(qs)}`;
   }
 
-  // method to return the relevant setting object based on name of the provider
   static getProvider(providerName) {
     const provider = this.providers.find(provider => provider.name === providerName);
     provider.authLink = this.getAuthLink(provider);

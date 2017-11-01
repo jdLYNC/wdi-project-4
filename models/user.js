@@ -8,17 +8,26 @@ const locationSchema = new mongoose.Schema({
 });
 
 const userSchema = new mongoose.Schema({
+
   // Shared user values
-  name: { type: String, required: 'Please provide a name' },
-  email: { type: String,
+  name: {
+    type: String,
+    required: 'Please provide a name' },
+  email: {
+    type: String,
     required: 'Please provide an email',
-    unique: 'That email has already been taken'
-  },
+    unique: 'That email has already been taken' },
   password: { type: String },
-  center: { type: Boolean, required: 'Please confirm account type', default: false },
+  center: { type: Boolean,
+    required: 'Please confirm account type',
+    default: false },
+
   // Diver specific values
   facebookId: { type: Number },
-  certLv: { type: mongoose.Schema.ObjectId, ref: 'Certification' },
+  certLv: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Certification' },
+
   // Center specific values
   image: { type: String },
   address: { type: String },
@@ -52,7 +61,6 @@ userSchema.pre('save', function hashPassword(next) {
   }
   next();
 });
-
 
 userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);

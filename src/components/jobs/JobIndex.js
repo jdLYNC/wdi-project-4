@@ -13,13 +13,13 @@ class JobIndex extends React.Component {
   state = {
     jobs: [],
     filteredJobs: [],
-    show: false,
     selectedJob: null,
-    filterParams: [0, 1, 2, 3, 4, 5],
+    show: false,
+    filterJobs: [0, 1, 2, 3, 4, 5],
     countries: [],
-    selectedCountries: [],
+    filterCountries: [],
     regions: [],
-    selectedRegions: []
+    filterRegions: []
   };
 
   openClose = (job) => {
@@ -30,24 +30,24 @@ class JobIndex extends React.Component {
 
   setJobFilter = ( { target: { value } }) => {
     if (!value) return null;
-    const filterParams = _.xor(this.state.filterParams, [parseInt(value)]);
-    this.setState({ filterParams }, () => this.handleFilter());
+    const filterJobs = _.xor(this.state.filterJobs, [parseInt(value)]);
+    this.setState({ filterJobs }, () => this.handleFilter());
   }
 
   setCountryFilter = (value) => {
-    this.setState({ selectedCountries: value }, () => this.handleFilter());
+    this.setState({ filterCountries: value }, () => this.handleFilter());
   }
 
   setRegionFilter = (value) => {
-    this.setState({ selectedRegions: value }, () => this.handleFilter());
+    this.setState({ filterRegions: value }, () => this.handleFilter());
   }
 
   handleFilter = () => {
-    const selectedLocations = this.state.selectedCountries.concat(this.state.selectedRegions);
+    const selectedLocations = this.state.filterCountries.concat(this.state.filterRegions);
     const filteredJobs = this.state.jobs.filter(job => {
       return (
-        (this.state.filterParams.includes(job.reqCertLv.level)
-        || this.state.filterParams.length < 1)
+        (this.state.filterJobs.includes(job.reqCertLv.level)
+        || this.state.filterJobs.length < 1)
         && (selectedLocations.find(location => location.label === job.center.country
         || location.label === job.center.region)
         || selectedLocations.length < 1)
@@ -99,7 +99,7 @@ class JobIndex extends React.Component {
   }
 
   render() {
-    console.log('selectedRegions ===>>>', this.state.selectedRegions);
+    console.log('filterRegions ===>>>', this.state.filterRegions);
     return (
       <div className="container">
         <div className="row">
@@ -119,13 +119,13 @@ class JobIndex extends React.Component {
             { this.state.certs && <JobFilter
               setJobFilter={this.setJobFilter}
               certs={this.state.certs}
-              filterParams={this.state.filterParams}
+              filterJobs={this.state.filterJobs}
               countries={this.state.countries}
               setCountryFilter={this.setCountryFilter}
-              selectedCountries={this.state.selectedCountries}
+              filterCountries={this.state.filterCountries}
               regions={this.state.regions}
               setRegionFilter={this.setRegionFilter}
-              selectedRegions={this.state.selectedRegions}></JobFilter>}
+              filterRegions={this.state.filterRegions}></JobFilter>}
             <JobScroller
               jobs={this.state.filteredJobs}
               modal={this.openClose}/>

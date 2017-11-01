@@ -4,6 +4,7 @@ const certifications = require('../controllers/certifications');
 const messages = require('../controllers/messages');
 const auth  = require('../controllers/auth');
 const oauth  = require('../controllers/oauth');
+const users  = require('../controllers/users');
 const userRoute = require('../lib/secureRoute');
 const imageUpload = require('../lib/imageUpload');
 
@@ -35,12 +36,11 @@ router.route('/register')
 router.route('/login')
   .post(auth.login);
 
-
 router.route('/profile')
   .get(userRoute(true), auth.profile);
 
 router.route('/users/:id')
-  .get(userRoute(true), auth.usersShow);
+  .get(userRoute(true), users.show);
 
 router.route('/oauth/facebook')
   .post(oauth.facebook);
