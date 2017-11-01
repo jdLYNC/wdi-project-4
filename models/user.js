@@ -9,10 +9,13 @@ const locationSchema = new mongoose.Schema({
 
 const userSchema = new mongoose.Schema({
   // Shared user values
-  name: { type: String, required: 'Username is required' },
-  email: { type: String, required: 'Email is required', unique: 'That email has already been taken' },
+  name: { type: String, required: 'Please provide a name' },
+  email: { type: String,
+    required: 'Please provide an email',
+    unique: 'That email has already been taken'
+  },
   password: { type: String, required: 'Password is required' },
-  center: { type: Boolean, required: true },
+  center: { type: Boolean, required: 'Please confirm account type' },
   // Diver specific values
   certLv: { type: mongoose.Schema.ObjectId, ref: 'Certification' },
   // Center specific values

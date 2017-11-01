@@ -4,8 +4,8 @@ import { ButtonToolbar, ControlLabel, ToggleButtonGroup, ToggleButton, FormGroup
 import PlacesAutocomplete from 'react-places-autocomplete';
 import DragDrop from '../utilities/DragDrop';
 
-const RegisterForm = ({ handleChange, certs, centerReg, handleSubmit, newUser, handleAddressChange, handleSelect }) => {
-  // console.log(centerReg);
+const RegisterForm = ({ handleChange, certs, handleSubmit, newUser, handleAddressChange, handleSelect, errors }) => {
+  // console.log);
 
   const inputProps = {
     name: 'address',
@@ -13,49 +13,63 @@ const RegisterForm = ({ handleChange, certs, centerReg, handleSubmit, newUser, h
     onChange: handleAddressChange
   };
 
+  const formInvalid = Object.keys(errors).some(key => errors[key]);
+
   const AutocompleteItem = ({ suggestion }) => (<div><i className="fa fa-map-marker"/>{suggestion}</div>);
 
   return(
-    <form className="form" onChange={handleChange} onSubmit={handleSubmit}>
+    <form className="form" onChange={handleChange} onSubmit={handleSubmit} noValidate>
       <h2>Create an Account</h2>
       <FieldGroup
         name="name"
         type="text"
         label="Name"
         placeholder="Scuba Steve"
+        value={newUser.name}
       />
+      {errors.name && <small className="error-text">{errors.name}</small>}
+
       <FieldGroup
         name="email"
         type="email"
         label="Email"
         placeholder="steve@diveboard.com"
+        value={newUser.email}
       />
+      {errors.email && <small className="error-text">{errors.email}</small>}
+
       <FieldGroup
         name="password"
         type="password"
         label="Password"
         placeholder="********"
+        value={newUser.password}
       />
+      {errors.password && <small className="error-text">{errors.password}</small>}
+
       <FieldGroup
         name="passwordConfirmation"
         type="password"
         label="Confirm Password"
         placeholder="********"
+        value={newUser.passwordConfirmation}
       />
+      {errors.passwordConfirmation && <small className="error-text">{errors.passwordConfirmation}</small>}
 
       <FormGroup>
         <ControlLabel>Account Type</ControlLabel>
         <ButtonToolbar>
           <ToggleButtonGroup
             type="radio"
-            name="center">
+            name="center"
+            value={newUser.center}>
             <ToggleButton value={false}>Diver</ToggleButton>
             <ToggleButton value={true}>Dive Center</ToggleButton>
           </ToggleButtonGroup>
         </ButtonToolbar>
       </FormGroup>
 
-      { !centerReg && <FormGroup>
+      { !newUser.center && <FormGroup>
         <ControlLabel>Certification Level</ControlLabel>
         <FormControl componentClass="select" name="certLv">
           {certs.map(cert => (
@@ -64,14 +78,20 @@ const RegisterForm = ({ handleChange, certs, centerReg, handleSubmit, newUser, h
         </FormControl>
       </FormGroup>}
 
-      <PlacesAutocomplete
-        inputProps={inputProps}
-        autocompleteItem={AutocompleteItem}
-        onSelect={handleSelect}/>
+      { newUser.center && <FormGroup>
+        <ControlLabel>Center Address</ControlLabel>
+        <PlacesAutocomplete
+          inputProps={inputProps}
+          autocompleteItem={AutocompleteItem}
+          onSelect={handleSelect}/>
+      </FormGroup> }
 
-      <DragDrop onChange={handleChange} value={newUser.image}/>
+      { newUser.center && <FormGroup>
+        <ControlLabel>Image/Logo</ControlLabel>
+        <DragDrop onChange={handleChange} value={newUser.image}/>
+      </FormGroup> }
 
-      <button className="btn btn-lg btn-default btn-block">Join Diveboard!</button>
+      <button className="btn btn-lg btn-default btn-block" disabled={formInvalid}>Join Diveboard!</button>
 
     </form>
   );
