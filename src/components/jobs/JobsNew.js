@@ -7,8 +7,8 @@ import Auth from '../../lib/Auth';
 const Background = styled.div`
   z-index: -1;
   width: 100vw;
-  height: 100vh;
-  background-image: url('../../assets/images/talia-cohen.jpg');
+  height: 93vh;
+  background-image: url('../../assets/images/ahmed-saffu.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -58,7 +58,6 @@ class JobsNew extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <Background>
         <div className="container">

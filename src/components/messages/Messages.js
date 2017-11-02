@@ -70,14 +70,23 @@ class Messages extends React.Component {
           selectedMessages: selectedMessages,
           users: users,
           newMessage: newMessage
-        });
+        }, this.markAsRead);
       })
       .catch(err => console.log(err));
   }
 
+  markAsRead() {
+    this.state.selectedMessages.forEach(message => {
+      if(message.read || message.from.id === Auth.getPayload().userId) return null;
+      Axios.put(`/api/messages/${message.id}`, { read: true }, {
+        headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
+      });
+    });
+  }
+
   handleChange = ({ target: { name, value } }) => {
     const newMessage = Object.assign({}, this.state.newMessage, { [(name)]: value });
-    this.setState({ newMessage }, console.log(this.state.newMessage));
+    this.setState({ newMessage });
   }
 
   handleUserChange = ({ target: { value }}) => {
@@ -90,7 +99,7 @@ class Messages extends React.Component {
 
   filterMessages = () => {
     const filteredMessages = _.filter(this.state.messages, message => this.state.selectedUser === message.from.id || this.state.selectedUser === message.to.id);
-    this.setState({ selectedMessages: filteredMessages });
+    this.setState({ selectedMessages: filteredMessages }, this.markAsRead);
   }
 
   handleSubmit = (e) => {
@@ -125,8 +134,8 @@ class Messages extends React.Component {
   }
 
   stickyScroll() {
-    const objDiv = document.getElementsByClassName('message-viewer')[0];
-    objDiv.scrollTop = objDiv.scrollHeight;
+    const messageViewer = document.getElementsByClassName('message-viewer')[0];
+    messageViewer.scrollTop = messageViewer.scrollHeight;
   }
 
   render() {

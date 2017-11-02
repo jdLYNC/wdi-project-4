@@ -28,6 +28,7 @@ router.route('/messages')
   .post(userRoute(true), messages.create);
 
 router.route('/messages/:id')
+  .put(userRoute(true), messages.update)
   .delete(userRoute(true), messages.delete);
 
 router.route('/register')

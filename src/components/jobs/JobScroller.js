@@ -75,9 +75,9 @@ const JobScroller = ({ jobs, modal }) => {
           </JobRowInfo>
         </JobRow>
       ))}
-      <ScrollButton onClick={scrollJobs}>
+      { jobs.length > 3 && <ScrollButton onClick={scrollJobs}>
         <i className="fa fa-arrow-circle-down" aria-hidden="true"></i>
-      </ScrollButton>
+      </ScrollButton> }
     </ScrollContainer>
   );
 };

@@ -248,35 +248,35 @@ mongoose.connect(dbURI, { useMongoClient: true })
         const jobData = [{
           center: users[2],
           reqCertLv: certLvls[1],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          description: 'We are looking for experience Padi Scuba Dive Instructor and manager whom can help us manage and operate our Dive Center. The right candidate should have experience in managing his or her team from Operational, Sales and Marketing and conduct Scuba Dive courses. Preferably, already residing in Indonesia or familiarise with Bali Dive sites.'
         }, {
           center: users[3],
           reqCertLv: certLvls[5],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
+          description: 'A busy 5* PADI IDC Centre looking for part time instructors to join our friendly team for evening and weekend work. Ideally we are looking for instructors happy to dive and teach in lakes  as well as pool work but we will consider applicants who are just interested in pool work.'
         }, {
           center: users[4],
           reqCertLv: certLvls[4],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          description: 'You will be working at the elite swimming academy based in the city of Marsalforn owned by the Malta government.  You will responsible for instructing and teaching the local community to explore the underwater world of the Mediteranean sea.  Excellent relocation package for the suitable instructor.  Minimum requirements are 2 years working experience at a resort or leisure facility offering scuba divign lessons.'
         }, {
           center: users[5],
           reqCertLv: certLvls[0],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
+          description: 'We are looking for fun, friendly and enthusiastic people to join our team, and complete their PADI Divemaster Internship with us. This is perfect for anyone who has never dived before, up to certified rescue diver. You will be ready to take the next step in becoming a PADI Pro. We offer a very professional yet highly enjoyable time with us. Not only do we want to provide you with the best time in the water, but on land also. Offering diving all over the island, and also excursions too. We provide accommodation, very cheap boat diving for our interns, discounts on speciality courses, and many other things to better your time with us. If all sounds good to you so far, please email us so we can provide you with a full description and a quote for our internship and/or take a look at our website.'
         }, {
           center: users[6],
           reqCertLv: certLvls[2],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          description: 'Dive instructor. We are looking for a dive instructor for our relatively new dive resort. We have currently 6 bungalows ready, and 6 more under construction. We do not work with divemasters/ guides (yet). We are looking for an independent working instructor to run our dive center.'
         }, {
           center: users[7],
           reqCertLv: certLvls[2],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
+          description: 'We looking for Diving Instructor for our fully functioning dive centre.'
         }, {
           center: users[8],
           reqCertLv: certLvls[1],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          description: 'Our dive center in a four-star resort is looking for a GERMAN speaking instructor to join the dive team. We offer: Basic salary + course commissions + service charge + monthly flight allowance, Accommodation in a two-share room. All 3 meals included in resorts main European style guest restaurant (not the staff canteen) Discount on drinks. You should be: Fluent in both German and English. A PADI dive instructor, insured and in teaching status, with own equipment. Guest-friendly but professional, and above all a team player. Willing to live and work on a small, isolated island.'
         }, {
           center: users[9],
           reqCertLv: certLvls[5],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
+          description: 'We are looking for an instructor experienced with DSDs that can stay with us till the end of the season Oct15th.'
         }, {
           center: users[10],
           reqCertLv: certLvls[4],
@@ -284,139 +284,7 @@ mongoose.connect(dbURI, { useMongoClient: true })
         }, {
           center: users[11],
           reqCertLv: certLvls[0],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[12],
-          reqCertLv: certLvls[4],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[13],
-          reqCertLv: certLvls[0],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[3],
-          reqCertLv: certLvls[5],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[4],
-          reqCertLv: certLvls[4],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[5],
-          reqCertLv: certLvls[0],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[6],
-          reqCertLv: certLvls[2],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[7],
-          reqCertLv: certLvls[2],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[8],
-          reqCertLv: certLvls[1],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[9],
-          reqCertLv: certLvls[5],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[10],
-          reqCertLv: certLvls[4],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[11],
-          reqCertLv: certLvls[0],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[12],
-          reqCertLv: certLvls[4],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[13],
-          reqCertLv: certLvls[0],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[3],
-          reqCertLv: certLvls[5],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[4],
-          reqCertLv: certLvls[4],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[5],
-          reqCertLv: certLvls[0],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[6],
-          reqCertLv: certLvls[2],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[7],
-          reqCertLv: certLvls[2],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[8],
-          reqCertLv: certLvls[1],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[9],
-          reqCertLv: certLvls[5],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[10],
-          reqCertLv: certLvls[4],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[11],
-          reqCertLv: certLvls[0],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[12],
-          reqCertLv: certLvls[4],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[13],
-          reqCertLv: certLvls[0],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[3],
-          reqCertLv: certLvls[5],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[4],
-          reqCertLv: certLvls[4],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[5],
-          reqCertLv: certLvls[0],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[6],
-          reqCertLv: certLvls[2],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[7],
-          reqCertLv: certLvls[2],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[8],
-          reqCertLv: certLvls[1],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[9],
-          reqCertLv: certLvls[5],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
-        }, {
-          center: users[10],
-          reqCertLv: certLvls[4],
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }, {
-          center: users[11],
-          reqCertLv: certLvls[0],
-          description: 'Nostrud tibique eos cu, nullam consectetuer eu sea. Ex vis minim everti, vis in veniam euismod nonumes, eum in novum tincidunt. Has atqui possit scriptorem an, pri no fastidii reformidans, id epicuri invenire definiebas usu. Cu magna suscipiantur per, verear postulant mediocrem ea cum.'
+          description: 'Looking for PADI Divemasters who would like to go on to their IDC starting in November. We have positions available for interns. In exchange for helping out and gaining experience after your instructor course is completed you can work off your IDC course. You would need to cover materials and PADI exam fees but can work off the course portion over a short period of time. Internships last typically 6 - 8 weeks. Job opportunities are available after the internship is finished for the continuing season.  Specifically looking for candidates as well that have experience in media and content production as well as social media for assistance and production of content for the websites and social media channels. Please contact the email above with a resume (CV) and details can be forwarded.'
         }, {
           center: users[12],
           reqCertLv: certLvls[4],
@@ -459,6 +327,46 @@ mongoose.connect(dbURI, { useMongoClient: true })
               from: users[5],
               to: users[0],
               text: 'Hi Josh, thanks for your interest, when can you start?',
+              read: false
+            }, {
+              from: users[1],
+              to: users[2],
+              text: 'Hi, I see you\'re looking for OWSI\'s to join your team in Vietnam.  I\'m interested!',
+              read: false
+            }, {
+              from: users[2],
+              to: users[1],
+              text: 'Hi Jess, that\'s great, have you got experience diving in Asia?',
+              read: false
+            }, {
+              from: users[1],
+              to: users[2],
+              text: 'Yes',
+              read: false
+            }, {
+              from: users[2],
+              to: users[1],
+              text: 'Make haste! Our center will surely fail without you!',
+              read: false
+            }, {
+              from: users[0],
+              to: users[7],
+              text: 'Hi, I see you\'re looking for OWSI\'s to join your team.  I\'m interested!',
+              read: false
+            }, {
+              from: users[7],
+              to: users[0],
+              text: 'Hi Josh, that\'s great, are you any good?',
+              read: false
+            }, {
+              from: users[0],
+              to: users[7],
+              text: 'Yes',
+              read: false
+            }, {
+              from: users[7],
+              to: users[0],
+              text: 'Make haste! Our center will surely fail without you!',
               read: false
             }];
             return Message

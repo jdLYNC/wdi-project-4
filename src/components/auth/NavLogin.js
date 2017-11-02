@@ -30,13 +30,13 @@ class NavLogin extends React.Component {
         Auth.setToken(res.data.token);
         Auth.setCurrentUser(res.data.user);
         this.props.history.push(this.props.history.location.pathname);
+        this.setState({ credentials: { email: '', password: '' } });
       })
       .catch(err => {
         Auth.logout();
         this.setState({ error: err.response.data });
       });
 
-    this.setState({ credentials: { email: '', password: '' } });
   }
 
   logout = (e) => {

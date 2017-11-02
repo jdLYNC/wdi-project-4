@@ -17,12 +17,15 @@ class GoogleMap extends React.Component {
   createMarkers() {
     this.bounds = new google.maps.LatLngBounds();
     this.props.jobs.forEach(job => {
+      let iconUrl = '../../assets/images/gmap_divr_icon1.png';
+      if (job.reqCertLv.level >= 2) iconUrl = '../../assets/images/gmap_divr_icon3.png';
+      if (job.reqCertLv.level >= 4) iconUrl = '../../assets/images/gmap_divr_icon4.png';
       const newMarker = new google.maps.Marker({
         map: this.map,
         position: job.center.location,
         icon: {
-          url: '../../assets/images/dive-flag.png',
-          scaledSize: new google.maps.Size(60, 30)
+          url: iconUrl,
+          scaledSize: new google.maps.Size(35, 35)
         }
       });
       google.maps.event.addListener(newMarker, 'click', () => {

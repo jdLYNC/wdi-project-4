@@ -27,8 +27,22 @@ function messagesDelete(req, res, next) {
     .catch(next);
 }
 
+function messagesUpdate(req, res, next) {
+  Message
+    .findById(req.params.id)
+    .exec()
+    .then(message => {
+      if(!message) return res.notFound();
+      message = Object.assign(message, req.body);
+      return message.save();
+    })
+    .then(message => res.json(message))
+    .catch(next);
+}
+
 module.exports = {
   index: messagesIndex,
   create: messagesCreate,
-  delete: messagesDelete
+  delete: messagesDelete,
+  update: messagesUpdate
 };
