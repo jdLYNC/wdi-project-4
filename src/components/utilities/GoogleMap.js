@@ -25,6 +25,9 @@ class GoogleMap extends React.Component {
           scaledSize: new google.maps.Size(60, 30)
         }
       });
+      google.maps.event.addListener(newMarker, 'click', () => {
+        this.props.modal(job);
+      });
       this.markers.push(newMarker);
       this.bounds.extend(job.center.location);
     });

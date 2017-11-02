@@ -14,7 +14,7 @@ class JobIndex extends React.Component {
     jobs: [],
     filteredJobs: [],
     selectedJob: null,
-    show: false,
+    showModal: false,
     filterJobs: [0, 1, 2, 3, 4, 5],
     countries: [],
     filterCountries: [],
@@ -22,9 +22,9 @@ class JobIndex extends React.Component {
     filterRegions: []
   };
 
-  openClose = (job) => {
+  openCloseModal = (job) => {
     this.setState(prevState => {
-      return { show: !prevState.show, selectedJob: job };
+      return { showModal: !prevState.showModal, selectedJob: job };
     });
   }
 
@@ -46,11 +46,8 @@ class JobIndex extends React.Component {
     const selectedLocations = this.state.filterCountries.concat(this.state.filterRegions);
     const filteredJobs = this.state.jobs.filter(job => {
       return (
-        (this.state.filterJobs.includes(job.reqCertLv.level)
-        || this.state.filterJobs.length < 1)
-        && (selectedLocations.find(location => location.label === job.center.country
-        || location.label === job.center.region)
-        || selectedLocations.length < 1)
+        (this.state.filterJobs.includes(job.reqCertLv.level) || this.state.filterJobs.length < 1)
+        && (selectedLocations.find(location => location.label === job.center.country || location.label === job.center.region) || selectedLocations.length < 1)
       );
     });
     this.setState({ filteredJobs });
@@ -61,12 +58,11 @@ class JobIndex extends React.Component {
       .delete(`/api/jobs/${job.id}`, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       });
-    this.openClose(job);
-    const remainingJobs = _.reject(this.state.jobs, {'id': job.id} );
-    this.setState({
-      jobs: remainingJobs,
-      filteredJobs: remainingJobs
-    });
+    this.openCloseModal(job);
+
+    const jobs = _.reject(this.state.jobs, {'id': job.id} );
+    const filteredJobs = _.reject(this.state.filteredJobs, {'id': job.id} );
+    this.setState({ jobs, filteredJobs });
   }
 
   componentWillMount() {
@@ -80,10 +76,8 @@ class JobIndex extends React.Component {
         let regions = res.data.map(job => {
           return { value: job.center.region, label: job.center.region };
         });
-        countries = _.uniqBy(countries, 'value');
-        countries = _.sortBy(countries, ['label']);
-        regions = _.uniqBy(regions, 'value');
-        regions = _.sortBy(regions, ['label']);
+        countries = _.sortBy(_.uniqBy(countries, 'label'), ['label']);
+        regions = _.sortBy(_.uniqBy(regions, 'label'), ['label']);
         this.setState({
           jobs: res.data,
           filteredJobs: res.data,
@@ -99,36 +93,44 @@ class JobIndex extends React.Component {
   }
 
   render() {
-    console.log('filterRegions ===>>>', this.state.filterRegions);
     return (
       <div className="container">
         <div className="row">
-          {this.state.selectedJob && <LocalModal
-            show={this.state.show}
-            close={this.openClose}
-            job={this.state.selectedJob}
-            deleteJob={this.deleteJob}></LocalModal>}
+
+          { this.state.selectedJob &&
+            <LocalModal
+              showModal={this.state.showModal}
+              close={this.openCloseModal}
+              job={this.state.selectedJob}
+              deleteJob={this.deleteJob} /> }
 
           <main className="col-sm-7">
-            {this.state.jobs[1] && <GoogleMap
-              jobs={this.state.filteredJobs}
-              show={this.state.show}
-              close={this.openClose}/>}
+            
+            {this.state.jobs[0] &&
+              <GoogleMap
+                jobs={this.state.filteredJobs}
+                modal={this.openCloseModal} />}
+
           </main>
+
           <section className="col-sm-5">
-            { this.state.certs && <JobFilter
-              setJobFilter={this.setJobFilter}
-              certs={this.state.certs}
-              filterJobs={this.state.filterJobs}
-              countries={this.state.countries}
-              setCountryFilter={this.setCountryFilter}
-              filterCountries={this.state.filterCountries}
-              regions={this.state.regions}
-              setRegionFilter={this.setRegionFilter}
-              filterRegions={this.state.filterRegions}></JobFilter>}
+
+            { this.state.certs &&
+              <JobFilter
+                setJobFilter={this.setJobFilter}
+                certs={this.state.certs}
+                filterJobs={this.state.filterJobs}
+                countries={this.state.countries}
+                setCountryFilter={this.setCountryFilter}
+                filterCountries={this.state.filterCountries}
+                regions={this.state.regions}
+                setRegionFilter={this.setRegionFilter}
+                filterRegions={this.state.filterRegions} />}
+
             <JobScroller
               jobs={this.state.filteredJobs}
-              modal={this.openClose}/>
+              modal={this.openCloseModal} />
+
           </section>
         </div>
       </div>

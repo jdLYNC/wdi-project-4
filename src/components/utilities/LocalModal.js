@@ -18,10 +18,10 @@ const ThumbnailContainer = styled.div`
   justify-content: center;
 `;
 
-const LocalModal = ({ show, close, job, deleteJob }) => {
+const LocalModal = ({ showModal, close, job, deleteJob }) => {
   return(
     <Modal
-      show={show}
+      show={showModal}
       onHide={() => close(job)}
       container={this}
       aria-labelledby="contained-modal-title"

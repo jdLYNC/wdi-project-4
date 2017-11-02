@@ -35,6 +35,8 @@ class NavLogin extends React.Component {
         Auth.logout();
         this.setState({ error: err.response.data });
       });
+
+    this.setState({ credentials: { email: '', password: '' } });
   }
 
   logout = (e) => {

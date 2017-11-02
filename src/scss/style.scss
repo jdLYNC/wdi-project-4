@@ -53,7 +53,8 @@ div.drag-drop {
   background-color: rgba(240, 240, 240, 0.9);
   padding: 6px;
   border-radius: 3px;
-  font-size: 1.1em;
+  font-size: 1.2em;
+  z-index: 10;
 }
 
 .flashMessage {
