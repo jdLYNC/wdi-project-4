@@ -1,6 +1,6 @@
 /* global google */
 import React from 'react';
-import mapStyles from '../misc/mapStyles';
+import mapStyles from '../misc/MapStyles';
 
 class GoogleMap extends React.Component {
 
