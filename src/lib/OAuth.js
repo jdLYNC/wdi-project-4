@@ -6,7 +6,7 @@ class OAuth {
     url: '/api/oauth/facebook',
     authEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
     scope: 'email',
-    clientId: 134361900536608
+    clientId: 385857171852710
   }];
 
   static getAuthLink(provider) {
