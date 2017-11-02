@@ -44,7 +44,7 @@ function facebook(req, res, next) {
     .then(user => {
       const payload = { userId: user.id };
       const token = jwt.sign(payload, secret, { expiresIn: '1hr' });
-      res.json({ token, message: `Welcome ${user.username}`});
+      res.json({ token, message: `Welcome ${user.username}`, user });
     })
     .catch(next);
 }

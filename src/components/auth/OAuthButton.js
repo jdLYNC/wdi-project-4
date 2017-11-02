@@ -12,6 +12,11 @@ const OButton = styled.a`
   margin: 0 3px;
   position: absolute;
   top: 5px;
+
+  @media (max-width: 768px) {
+    position: relative;
+    top: 10px;
+  }
 `;
 
 class OAuthButton extends React.Component {
@@ -23,10 +28,13 @@ class OAuthButton extends React.Component {
     if(!location.search.match(/code/) || localStorage.getItem('provider') !== provider) return false;
 
     Axios.post(this.provider.url, this.getData())
-      .then(res => Auth.setToken(res.data.token))
+      .then(res => {
+        Auth.setToken(res.data.token);
+        Auth.setCurrentUser(res.data.user);
+      })
       .then(() => localStorage.removeItem('provider'))
       .then(() => history.replace(location.pathname))
-      .then(() => history.push('/'));
+      .then(() => history.push(history.location.pathname));
 
   }
 

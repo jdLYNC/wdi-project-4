@@ -59,9 +59,9 @@ const RegisterForm = ({ certs, handleChange, handleSubmit, handleAddressChange, 
           <ToggleButtonGroup
             type="radio"
             name="center"
-            defaultValue={false}>
-            <ToggleButton value={false}>Diver</ToggleButton>
-            <ToggleButton value={true}>Dive Center</ToggleButton>
+            defaultValue={''}>
+            <ToggleButton value={''}>Diver</ToggleButton>
+            <ToggleButton value={'true'}>Dive Center</ToggleButton>
           </ToggleButtonGroup>
         </ButtonToolbar>
       </FormGroup>

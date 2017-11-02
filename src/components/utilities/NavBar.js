@@ -15,7 +15,7 @@ const NavBar = () => {
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
-      
+
       <Navbar.Collapse>
 
         <Nav>

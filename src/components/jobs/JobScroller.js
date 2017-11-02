@@ -3,10 +3,13 @@ import styled from 'styled-components';
 
 const ScrollContainer = styled.section`
   width: 100%;
-  height: 59vh;
+  height: 73vh;
   background-color: #FAFAFA;
   overflow: scroll;
-  margin: 5vh 0;
+  margin: 0;
+  @media (max-width: 500px) {
+    height: 44vh;
+  }
 `;
 
 const JobRow = styled.div`
@@ -15,6 +18,7 @@ const JobRow = styled.div`
   display: flex;
   margin: 5px 0;
   background-color: white;
+  font-size: 1.2em;
 `;
 
 const Thumbnail = styled.div`
@@ -33,9 +37,35 @@ const JobRowInfo = styled.div`
   justify-content: center;
 `;
 
+const ScrollButton = styled.button`
+  position: absolute;
+  top: 72vh;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 3em;
+  border-radius: 50px;
+  padding: 0;
+  line-height: 0;
+  color: rgba(0,0,0,0.7);
+  outline: none;
+  border: none;
+  @media (max-width: 500px) {
+    top: 42vh;
+    font-size: 4em;
+  }
+`;
+
+const scrollJobs = () => {
+  const objDiv = document.getElementById('scroll');
+  setTimeout(() => clearInterval(scrollTimer), 330);
+  const scrollTimer = setInterval(() => {
+    objDiv.scrollTop = objDiv.scrollTop + 10;
+  }, 10);
+};
+
 const JobScroller = ({ jobs, modal }) => {
   return(
-    <ScrollContainer onScroll={(e) => console.log(e.nativeEvent.target.children)}>
+    <ScrollContainer id="scroll">
       {jobs.map(job => (
         <JobRow key={job.id} onClick={() => modal(job)}>
           <Thumbnail image={job.center.image}></Thumbnail>
@@ -45,6 +75,9 @@ const JobScroller = ({ jobs, modal }) => {
           </JobRowInfo>
         </JobRow>
       ))}
+      <ScrollButton onClick={scrollJobs}>
+        <i className="fa fa-arrow-circle-down" aria-hidden="true"></i>
+      </ScrollButton>
     </ScrollContainer>
   );
 };

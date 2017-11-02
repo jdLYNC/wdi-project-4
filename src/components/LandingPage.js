@@ -8,6 +8,7 @@ const TitleHeader = styled.h2`
   margin-top: 5vh;
   font-size: 4.5em;
   color: white;
+  font-family: 'Lobster', cursive;
 `;
 
 const AboutHeader = styled.h2`
@@ -16,7 +17,7 @@ const AboutHeader = styled.h2`
 
 const AboutText = styled.p`
   margin-top: 5vh;
-  margin-bottom: 15vh;
+  margin-bottom: 21vh;
   font-size: 1.1em;
 `;
 

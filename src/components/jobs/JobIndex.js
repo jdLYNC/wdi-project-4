@@ -8,6 +8,8 @@ import GoogleMap from '../utilities/GoogleMap';
 import LocalModal from '../utilities/LocalModal';
 import Auth from '../../lib/Auth';
 
+import { Tabs, Tab } from 'react-bootstrap';
+
 class JobIndex extends React.Component {
 
   state = {
@@ -105,7 +107,7 @@ class JobIndex extends React.Component {
               deleteJob={this.deleteJob} /> }
 
           <main className="col-sm-7">
-            
+
             {this.state.jobs[0] &&
               <GoogleMap
                 jobs={this.state.filteredJobs}
@@ -113,23 +115,31 @@ class JobIndex extends React.Component {
 
           </main>
 
-          <section className="col-sm-5">
+          <section className="col-sm-5 margin">
 
-            { this.state.certs &&
-              <JobFilter
-                setJobFilter={this.setJobFilter}
-                certs={this.state.certs}
-                filterJobs={this.state.filterJobs}
-                countries={this.state.countries}
-                setCountryFilter={this.setCountryFilter}
-                filterCountries={this.state.filterCountries}
-                regions={this.state.regions}
-                setRegionFilter={this.setRegionFilter}
-                filterRegions={this.state.filterRegions} />}
+            <Tabs defaultActiveKey={2} id="job-data-tabs">
+              <Tab eventKey={1} title="Filter Jobs" className="mobile">
+                { this.state.certs &&
+                  <JobFilter
+                    setJobFilter={this.setJobFilter}
+                    certs={this.state.certs}
+                    filterJobs={this.state.filterJobs}
+                    countries={this.state.countries}
+                    setCountryFilter={this.setCountryFilter}
+                    filterCountries={this.state.filterCountries}
+                    regions={this.state.regions}
+                    setRegionFilter={this.setRegionFilter}
+                    filterRegions={this.state.filterRegions} />}
+              </Tab>
 
-            <JobScroller
-              jobs={this.state.filteredJobs}
-              modal={this.openCloseModal} />
+              <Tab eventKey={2} title="View Jobs">
+                <JobScroller
+                  jobs={this.state.filteredJobs}
+                  modal={this.openCloseModal} />
+              </Tab>
+            </Tabs>
+
+
 
           </section>
         </div>

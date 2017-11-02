@@ -1,8 +1,11 @@
 .messenger {
   background-color: white;
-  padding: 5vh;
+  padding: 3vh 5vh;
   border-radius: 5vh;
   margin: 5vh;
+  @media (max-width: 500px) {
+    margin: 2vh 0;
+  }
 }
 
 .message-viewer {
@@ -10,7 +13,7 @@
   flex-direction: column;
   height: 250px;
   overflow: scroll;
-  background-color: #EEE;
+  background-color: #2eb3bc;
 }
 
 .message {
@@ -21,7 +24,7 @@
   max-width: 80%;
   position: relative;
   align-self: flex-start;
-  background-color: white;
+  background-color: #fffdf2;
   .message-text {
     margin: 0;
   }
@@ -35,7 +38,23 @@
 }
 
 .message-from-user {
-  background-color: lightBlue;
+  background-color: #ffe13d;
   color: black;
   align-self: flex-end;
+}
+
+.text-area {
+  margin-left: 4%;
+  margin-top: 2%;
+  width: 70%;
+  display: inline-block;
+}
+
+.message-send {
+  display: inline-block;
+  width: 20%;
+  height: 55px;
+  position: relative;
+  left: 10px;
+  bottom: 22px;
 }

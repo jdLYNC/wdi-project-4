@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MessagesForm({ handleSubmit, handleChange, users, message }) {
+function MessagesForm({ handleSubmit, handleChange, message }) {
 
   return (
     <div className="row">
@@ -11,7 +11,7 @@ function MessagesForm({ handleSubmit, handleChange, users, message }) {
           className="form-horizontal">
 
           <div className="form-group">
-            <div className="col-sm-10">
+            <div className="text-area">
               <textarea
                 name="text"
                 value={message.text}
@@ -19,7 +19,7 @@ function MessagesForm({ handleSubmit, handleChange, users, message }) {
                 className="form-control">
               </textarea>
             </div>
-            <button className="btn btn-default col-sm-2" disabled={!message.text}>
+            <button className="btn btn-default message-send" disabled={!message.text}>
               <i className="fa fa-paper-plane-o btn"></i>
             </button>
           </div>

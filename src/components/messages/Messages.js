@@ -10,8 +10,8 @@ import Message from './Message';
 const Background = styled.div`
   z-index: -1;
   width: 100vw;
-  height: 100vh - 50px;
-  background-image: url('../../assets/images/talia-cohen.jpg');
+  height: 92.7vh;
+  background-image: url('../../assets/images/marc-doucakis.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,7 +32,6 @@ class Messages extends React.Component {
     }
   }
 
-
   componentWillMount() {
     if(this.state.selectedUser) {
       Axios
@@ -48,8 +47,6 @@ class Messages extends React.Component {
         })
         .catch(err => console.log(err));
     }
-
-    console.log('this.state.selectedUser', this.state.selectedUser);
 
     Axios
       .get('/api/messages', {
@@ -106,7 +103,7 @@ class Messages extends React.Component {
         const addMessage = this.state.messages.concat([res.data]);
         const addMessageToSelected = this.state.selectedMessages.concat([res.data]);
         const newMessage = Object.assign({}, this.state.newMessage, { text: '' });
-        this.setState({ messages: addMessage, selectedMessages: addMessageToSelected, newMessage: newMessage });
+        this.setState({ messages: addMessage, selectedMessages: addMessageToSelected, newMessage: newMessage }, this.stickyScroll);
       })
       .catch(err => console.log(err));
   }
@@ -125,6 +122,11 @@ class Messages extends React.Component {
       })
       .catch(err => console.log(err));
     this.deleteMessageLocal(id);
+  }
+
+  stickyScroll() {
+    const objDiv = document.getElementsByClassName('message-viewer')[0];
+    objDiv.scrollTop = objDiv.scrollHeight;
   }
 
   render() {
