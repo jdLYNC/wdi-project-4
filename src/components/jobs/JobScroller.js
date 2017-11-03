@@ -7,7 +7,7 @@ const ScrollContainer = styled.section`
   background-color: #FAFAFA;
   overflow: scroll;
   margin: 0;
-  @media (max-width: 500px) {
+  @media (max-width: 768px) {
     height: 44vh;
   }
 `;
@@ -49,7 +49,7 @@ const ScrollButton = styled.button`
   color: rgba(0,0,0,0.7);
   outline: none;
   border: none;
-  @media (max-width: 500px) {
+  @media (max-width: 768px) {
     top: 42vh;
     font-size: 4em;
   }

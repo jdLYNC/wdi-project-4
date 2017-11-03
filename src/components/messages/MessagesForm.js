@@ -4,7 +4,7 @@ function MessagesForm({ handleSubmit, handleChange, message }) {
 
   return (
     <div className="row">
-      <div className="col-sm-12">
+      <div className="col-md-12">
 
         <form
           onSubmit={handleSubmit}

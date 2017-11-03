@@ -143,7 +143,7 @@ class Messages extends React.Component {
       <Background>
         <div className="container">
           <div className="row">
-            <div className="col-sm-8 col-sm-offset-2">
+            <div className="col-md-8 col-md-offset-2">
               <aside className="messenger">
                 <h3>Messenger</h3>
                 <div className="form-group">
@@ -157,7 +157,7 @@ class Messages extends React.Component {
                   </select>
                 </div>
 
-                <section className="col-sm-12 message-viewer">
+                <section className="col-md-12 message-viewer">
                   {this.state.selectedMessages.map((message)=> {
                     return(
                       <Message

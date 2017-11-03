@@ -29,11 +29,11 @@ const LandingPage = () => {
       <SplashImage
         image="assets/images/denys-nevozhai.jpg"
         align="flex-end">
-        <div className="col-sm-6"><TitleHeader>Diveboard</TitleHeader></div>
+        <div className="col-md-6"><TitleHeader>Diveboard</TitleHeader></div>
       </SplashImage>
 
       <div className="container">
-        <div className="col-sm-12">
+        <div className="col-md-12">
           <AboutHeader>A better job site for divers...</AboutHeader>
           <AboutText>
           Finding a job in the diving industry is a exhausting.  If your tired of wasting time scrolling thorugh PADI classifieds and Divezone then try Diveboard!  Diveboard allows you to filter jobs to only the regions you{'\''}re interested in, and only the jobs that are right for you!  So if you{'\''}re looking to start your next adventure, try Diveboard, a better jobsite for divers...
@@ -42,9 +42,9 @@ const LandingPage = () => {
       </div>
 
       <SplashImage image ="assets/images/sam-soffes.jpg" align="center">
-        <div className="col-sm-6">
+        <div className="col-md-6">
         </div>
-        <div className="col-sm-5">
+        <div className="col-md-5">
           {!Auth.isAuthenticated() && <Register />}
         </div>
       </SplashImage>

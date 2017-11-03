@@ -62,7 +62,7 @@ class JobsNew extends React.Component {
       <Background>
         <div className="container">
           <div className="row">
-            <div className="col-sm-8 col-sm-offset-2">
+            <div className="col-md-8 col-md-offset-2">
               <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <ControlLabel>What level instructor do you require?</ControlLabel>

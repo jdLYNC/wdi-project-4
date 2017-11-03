@@ -56,7 +56,7 @@ class JobsEdit extends React.Component {
       <Background>
         <div className="container">
           <div className="row">
-            <div className="col-sm-8 col-sm-offset-2">
+            <div className="col-md-8 col-md-offset-2">
               {this.state.job.id && <JobForm
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}

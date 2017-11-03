@@ -37,7 +37,7 @@ const LocalModal = ({ showModal, close, job, deleteJob }) => {
         {job.description}
       </Modal.Body>
       { Auth.isAuthenticated() && <Modal.Footer>
-        { !Auth.getCurrentUser().center && <Link to={`/messages/${job.center.id}`}><Button bsSize="large" block>Apply</Button></Link> }
+        { !Auth.getCurrentUser().certLv.level >= job.reqCertLv.level - 1 && <Link to={`/messages/${job.center.id}`}><Button bsSize="large" block>Apply</Button></Link> }
         { Auth.getPayload().userId === job.center.id &&
           <Link to={`/jobs/${job.id}/edit`}>
             <Button>Edit</Button>

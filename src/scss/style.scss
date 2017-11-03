@@ -23,8 +23,8 @@ body {
   height: 80vh;
   width: 90%;
   margin: 5vh;
-  @media (max-width: 500px) {
-    height: 60vw;
+  @media (max-width: 768px) {
+    height: 40vh;
     width: 100%;
     margin: 2vw auto;
   }
@@ -66,6 +66,7 @@ div.drag-drop {
   padding: 6px;
   border-radius: 3px;
   font-size: 1.1em;
+  z-index: 10;
 }
 
 .flashMessage {
@@ -75,11 +76,11 @@ div.drag-drop {
 }
 
 .margin {
-  margin: 5vh 0;
+  margin: 3px 0;
 }
 
 .mobile {
-  @media (max-width: 500px) {
+  @media (max-width: 768px) {
     height: 40vh;
     width: 100%;
     overflow: scroll;
