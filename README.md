@@ -15,6 +15,7 @@
 ## Features
 
 <img src="https://i.imgur.com/QkM0jnM.png" alt="diveboard mobile pages">
+
 ## Challenges
 
 ## Successes
