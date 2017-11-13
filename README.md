@@ -1,19 +1,29 @@
-# WDI Project 4: MERN Stack
+[Premise](#premise "premise") - [Brief](#brief "brief") - [Approach](#approach "approach") - [Technologies](#technologies-used "technologies") - [Features](#features "features") - [Challenges](#challenges "challenges") - [Successes](#successes "successes") - [Improvements](#improvements "improvements") - [Diveboard](https://dive-board.herokuapp.com/ "Diveboard")
+# GA WDI Project 4 - Diveboard
+<img src="https://i.imgur.com/dIWTVDp.jpg" alt="diveboard landing page">
 
-## Deployment
+## Premise
 
-When deploying the app for the first time ensure you have run the following steps in order:
+## Brief
 
-1. `heroku create`
-1. `heroku addons:create mongolab`
-1. `heroku config:set NPM_CONFIG_PRODUCTION=false`
-1. `git push heroku master`
-1. `heroku open`
+## Technologies used
+* HTML5
+* CSS, **Bootstrap**, SCSS, Styled-Components
+* JavaScript, **React**, Express, **Node.JS**, **Mongoose ODM**, **bcrypt**
+* Other: MondoDB, Webpack, Yarn
 
-After that simply `git commit` and `git push heroku master`.
+## Features
 
-## Important
+<img src="https://i.imgur.com/QkM0jnM.png" alt="diveboard mobile pages">
+## Challenges
 
-Ensure that you add any relevant environment variables to heroku with `heroku config:set`, eg:
+## Successes
 
-`heroku config:set AWS_BUCKET_NAME=wdi-project-4`
+## Improvements
+
+### ??? Technical Changes
+
+### ??? Changes
+
+## Link ##
+[Visit Diveboard on Heroku](https://dive-board.herokuapp.com/ "Diveboard")
