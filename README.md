@@ -73,6 +73,8 @@ const ProtectedRoute = ({ center, component: Component, ...other }) => {
 };
 ```
 
+Other key challenges with Diveboard, included managing the vast usage of referenced data (especially when seeding data for the test suite) and ensuring that users signing up with Facebook OAuth would have the correct access.
+
 ## Successes
 
 ## Improvements
