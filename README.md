@@ -73,15 +73,36 @@ const ProtectedRoute = ({ center, component: Component, ...other }) => {
 };
 ```
 
+Another specific challenge of the project came from the registration of Dive Center accounts as these required a large ammount of location data which could not all be obtained from GoogleMap/Places.  My solution to this issue involved making an additional request to rest countries API on form submission, this presented challenges it relied upon correct managing a chain of promises where the API new request was dependent on the response data of the previous request.  [Ultimately I managed to refactor this into a functional and readable solution however it was quite a challenge](https://github.com/jdLYNC/wdi-project-4/blob/master/src/components/auth/Register.js "register component file").
+
 Other key challenges with Diveboard, included managing the vast usage of referenced data (especially when seeding data for the test suite) and ensuring that users signing up with Facebook OAuth would have the correct access.
 
 ## Successes
 
+In addition to the success of the secure routing outlined above, another success with Diveboard was the [direct messaging system](https://github.com/jdLYNC/wdi-project-4/blob/master/src/components/messages/Messages.js "messages component file").  This was a vast improvement over the direct messaging system I implemented in project 2.  This upgraded messaging system featured a more streamlined user experienced with a simple conversation selector, partially RESTful messages, an intuitive display that defaults to the conversation with the most recent activity on page load, and unread message notifications.
+
+<img src="https://i.imgur.com/QCropWB.png" alt="diveboard messaging">
+
+Other successes include the effective implementation of Styled Components within the project and the comprehensive test suite built for the API.
+
 ## Improvements
 
-### ??? Technical Changes
+Having concluded Diveboard there are a number of changes I would like to make.  Some are small technical bug fixes, others are larger additional features for a new release.
 
-### ??? Changes
+### Technical Changes & Bug Fixes
+* Fix bug for users logging in through OAuth sometimes having issues viewing/applying for jobs.
+* Improve the mechanism by which unread messages notifications operate, to better reflect best practice.
+
+### Feature Changes
+* User profile pages
+* Fully RESTful user accounts
+* Increased user information such as speciality certifications which can be used to further refine filtering.
+* Increased information in job model on seperate filterable requirements.
+* User settings to enable custom default filtering options.
+* Time limited job adverts.
+* A user homepage with new jobs and current application status information.
+
+I thoroughly enjoyed working on Diveboard and fully intend to pursue production of a second version of the site incorporatig the changes outlines above.
 
 ## Link ##
 [Visit Diveboard on Heroku](https://dive-board.herokuapp.com/ "Diveboard")
