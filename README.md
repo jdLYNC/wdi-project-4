@@ -32,7 +32,8 @@ Diveboard's features include a GoogleMaps component with contextual markers, num
 Some of the key challenges with Diveboard stemmed from managing the different user account types.  Initially I was conflicted over whether to employ a single or multiple models to allow for the different account types, I opted for a single account type to ensure users did not require seperate log in forms however this led to other complications.
 
 One of the challenges that arose from this was managing the different access levels to the app, my solution to this was to create a closure in the back-end which would distinguish between the different kinds of secure route in the app.
-```function userRoute(bool) {
+```
+function userRoute(bool) {
 
   return function secureRoute(req, res, next) {
     if(!req.headers.authorization) return res.unauthorized();
@@ -52,10 +53,12 @@ One of the challenges that arose from this was managing the different access lev
       .catch(next);
   };
 
-}```
+}
+```
 
 This was complimented by a Higher Order Component in the React app to ensure routes were fully protected from unauthorized users.
-```const ProtectedRoute = ({ center, component: Component, ...other }) => {
+```
+const ProtectedRoute = ({ center, component: Component, ...other }) => {
   return (
     <Route {...other} render={props => {
       if (!center && Auth.isAuthenticated()) {
@@ -67,7 +70,8 @@ This was complimented by a Higher Order Component in the React app to ensure rou
       }
     }}/>
   );
-};```
+};
+```
 
 ## Successes
 
